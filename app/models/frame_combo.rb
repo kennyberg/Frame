@@ -1,6 +1,7 @@
 class FrameCombo < ApplicationRecord
-  has_one :frame_material
-  has_one :frame_dimension
+  belongs_to :frame_material
+  belongs_to :frame_dimension
+  has_many :products
 
   monetize :price_cents
 end

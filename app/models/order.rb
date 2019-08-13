@@ -1,6 +1,5 @@
 class Order < ApplicationRecord
-  has_one :cart
+  belongs_to :cart
   belongs_to :user
-  belongs_to :supplier
-  # has_many :products, through: :carts # do we need that or not?
+  # belongs_to :supplier -> let's do that later if we can
 end
