@@ -1,0 +1,2 @@
+class FrameMaterial < ApplicationRecord
+end
