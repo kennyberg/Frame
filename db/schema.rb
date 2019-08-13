@@ -10,18 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_13_051319) do
+ActiveRecord::Schema.define(version: 2019_08_13_062014) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "cart_products", force: :cascade do |t|
+    t.bigint "product_id"
+    t.bigint "cart_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cart_id"], name: "index_cart_products_on_cart_id"
+    t.index ["product_id"], name: "index_cart_products_on_product_id"
+  end
+
   create_table "carts", force: :cascade do |t|
     t.bigint "user_id"
-    t.bigint "product_id"
     t.integer "total_price_cents", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["product_id"], name: "index_carts_on_product_id"
+    t.string "state"
     t.index ["user_id"], name: "index_carts_on_user_id"
   end
 
@@ -122,7 +130,8 @@ ActiveRecord::Schema.define(version: 2019_08_13_051319) do
     t.index ["user_id"], name: "index_wishlists_on_user_id"
   end
 
-  add_foreign_key "carts", "products"
+  add_foreign_key "cart_products", "carts"
+  add_foreign_key "cart_products", "products"
   add_foreign_key "carts", "users"
   add_foreign_key "frame_combos", "frame_dimensions"
   add_foreign_key "frame_combos", "frame_materials"

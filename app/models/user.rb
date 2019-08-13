@@ -3,6 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
   has_many :orders # a user can have many orders (including former ones)
   has_many :photos # photos uploaded by the user
   has_many :photos, through: :wishlists # photos that the user has in his wishlist
