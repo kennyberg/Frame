@@ -1,4 +1,4 @@
 class Product < ApplicationRecord
-  belongs_to :photo
-  belongs_to :frame_combo
+  has_one :photo
+  has_one :frame_combo
 end

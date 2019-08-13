@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_13_044822) do
+ActiveRecord::Schema.define(version: 2019_08_13_051319) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "carts", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "product_id"
+    t.integer "total_price_cents", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_carts_on_product_id"
+    t.index ["user_id"], name: "index_carts_on_user_id"
+  end
 
   create_table "frame_combos", force: :cascade do |t|
     t.bigint "frame_material_id"
@@ -39,6 +49,24 @@ ActiveRecord::Schema.define(version: 2019_08_13_044822) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "orders", force: :cascade do |t|
+    t.bigint "cart_id"
+    t.bigint "user_id"
+    t.string "address_line_1"
+    t.string "address_zipcode"
+    t.string "address_city"
+    t.string "country"
+    t.string "phone_number"
+    t.string "state"
+    t.jsonb "payment"
+    t.bigint "supplier_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cart_id"], name: "index_orders_on_cart_id"
+    t.index ["supplier_id"], name: "index_orders_on_supplier_id"
+    t.index ["user_id"], name: "index_orders_on_user_id"
+  end
+
   create_table "photos", force: :cascade do |t|
     t.string "title"
     t.integer "height"
@@ -62,6 +90,17 @@ ActiveRecord::Schema.define(version: 2019_08_13_044822) do
     t.index ["photo_id"], name: "index_products_on_photo_id"
   end
 
+  create_table "suppliers", force: :cascade do |t|
+    t.string "company_name"
+    t.string "address_line_1"
+    t.string "address_zipcode"
+    t.string "address_city"
+    t.string "country"
+    t.string "delivering_region"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -83,8 +122,13 @@ ActiveRecord::Schema.define(version: 2019_08_13_044822) do
     t.index ["user_id"], name: "index_wishlists_on_user_id"
   end
 
+  add_foreign_key "carts", "products"
+  add_foreign_key "carts", "users"
   add_foreign_key "frame_combos", "frame_dimensions"
   add_foreign_key "frame_combos", "frame_materials"
+  add_foreign_key "orders", "carts"
+  add_foreign_key "orders", "suppliers"
+  add_foreign_key "orders", "users"
   add_foreign_key "photos", "users"
   add_foreign_key "products", "frame_combos"
   add_foreign_key "products", "photos"
