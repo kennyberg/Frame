@@ -12,6 +12,7 @@ class PhotosController < ApplicationController
   def create
     @photo = Photo.new(photo_params)
     @photo.user_id = current_user.id
+    @photo.api_url = "https://res.cloudinary.com/kbframe/#{@photo.upload.identifier}"
     if @photo.save
       redirect_to photos_path
     else
@@ -25,6 +26,6 @@ class PhotosController < ApplicationController
   private
 
   def photo_params
-    params.require(:photo).permit(:title, :uploaded_url)
+    params.require(:photo).permit(:title, :upload, :user_id, :api_url)
   end
 end

@@ -80,7 +80,7 @@ ActiveRecord::Schema.define(version: 2019_08_13_063006) do
     t.integer "height"
     t.integer "width"
     t.text "description"
-    t.string "uploaded_url"
+    t.string "upload"
     t.string "api_url"
     t.string "photographer_name"
     t.bigint "user_id"
