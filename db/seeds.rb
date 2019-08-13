@@ -32,15 +32,15 @@ user_attributes = [
   {
     email: 'kenny@gmail.com',
     first_name: 'kenny',
-    last_name: 'berg'
-    password: 'password'
+    last_name: 'berg',
+    password: "password"
   },
 
   {
     email: 'caroline@gmail.com',
     first_name: 'caroline',
-    last_name: 'dupre'
-    password: 'password'
+    last_name: 'dupre',
+    password: "password"
   }
 ]
 User.create!(user_attributes)
@@ -48,7 +48,8 @@ User.create!(user_attributes)
 # --------------------------------------------------
 
 # photo_1 = Photo.new(
-#   title: "A beautiful photo"
+#   title: "A beautiful photo",
+#   remote_api_url: "https://images.pexels.com/photos/2174656/pexels-photo-2174656.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
 # )
 # photo_1.remote_api_url = "https://images.pexels.com/photos/2174656/pexels-photo-2174656.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
 # photo_1.save!
@@ -138,7 +139,7 @@ frame_combo_attributes = [
     price: 180
   }
 ]
-FrameCombos.create!(frame_combo_attributes)
+FrameCombo.create!(frame_combo_attributes)
 
 puts "Finished"
 
