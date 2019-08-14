@@ -1,4 +1,4 @@
-<%= simple_form_for([@photo, @product]) do |f| %>
+<%= simple_form_for(@product) do |f| %>
   <!-- [...] -->
   <select name="frame[dimension]" id="dimension">
     <% @frame_dimensions.each do |dimension| %>
