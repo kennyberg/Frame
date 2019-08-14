@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_13_063006) do
+ActiveRecord::Schema.define(version: 2019_08_13_143151) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -80,12 +80,13 @@ ActiveRecord::Schema.define(version: 2019_08_13_063006) do
     t.integer "height"
     t.integer "width"
     t.text "description"
-    t.string "uploaded_url"
+    t.string "upload"
     t.string "api_url"
     t.string "photographer_name"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "cl_url"
     t.index ["user_id"], name: "index_photos_on_user_id"
   end
 
