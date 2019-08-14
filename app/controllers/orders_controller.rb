@@ -1,7 +1,10 @@
 class OrdersController < ApplicationController
-  before_action :set_order, only: [:show, :edit, :update]
+  before_action :set_order, only: [:show]
 
   def show
+    @cart = Cart.find(params[:cart_id])
+    # est-ce que ça me suffit pour importer les éléments du cart et les appeler dans ma show?
+
   end
 
   def new
@@ -15,20 +18,15 @@ class OrdersController < ApplicationController
     @order.user_id = current_user.id
     @order.cart_id = params[:cart_id]
 
-    # @order.save() to do > payment
-    if
-
+    if @order.save
+      @status = "pending"
+      # comment je change le status ici ?
+      redirect_to new_cart_order_path(@order.cart_id)
+    else
+      render "new"
     end
-
   end
 
-  def edit
-  end
-
-  def update
-    @order.update(order_params)
-    redirect_to photos_path
-  end
 
   private
 
@@ -40,6 +38,8 @@ class OrdersController < ApplicationController
   def set_order
     @order = Order.find(params[:id])
   end
+
+
 end
 
 

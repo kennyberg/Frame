@@ -1,25 +1,14 @@
 <h1>Order#new</h1>
 
-
-
-<%= form_for(order) do |f| %>
-<%= f.association :cart_id %>
-<%= f.association :user_id %>
-<%= f.association :supplier_id %>
-<%= f.label :address_line_1 %>
-<%= f.label :address_zipcode %>
-<%= f.label :address_city %>
-<%= f.label :country %>
-<%= f.label :phone_number %>
-<%= f.label :state %>
-<%= f.text_field :name %>
-<%= f.submit %>
+<h2>Please give us the delivery information</h2>
+<%= simple_form_for [@cart, @order] do |f| %>
+<%= f.input :address_line_1 %>
+<%= f.input :address_zipcode %>
+<%= f.input :address_city %>
+<%= f.input :country %>
+<%= f.input :phone_number %>
+<%= f.input :state %>
+<%= f.button :submit %>
 <% end %>
 
-
-
-    t.jsonb "payment"
-    t.index ["cart_id"], name: "index_orders_on_cart_id"
-    t.index ["supplier_id"], name: "index_orders_on_supplier_id"
-    t.index ["user_id"], name: "index_orders_on_user_id"
 

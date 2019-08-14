@@ -1,8 +1,4 @@
 Rails.application.routes.draw do
-  get 'orders/show'
-  get 'orders/create'
-  get 'orders/edit'
-  get 'orders/update'
   devise_for :users
   root to: 'pages#home'
   get '/dashboard', to: 'pages#dashboard', as: 'user_dashboard'
@@ -15,3 +11,4 @@ Rails.application.routes.draw do
   end
   resources :orders, only: [:show]
 end
+
