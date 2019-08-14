@@ -1,11 +1,22 @@
 class OrdersController < ApplicationController
-  before_action :set_order, only: [:show]
 
   def show
-    @cart = Cart.find(params[:cart_id])
-    # est-ce que ça me suffit pour importer les éléments du cart et les appeler dans ma show?
+    @order = Order.find(params[:id])
+    @cart = Cart.find(@order.cart_id)
+    @cart_products = @cart.cart_products
 
+    product_ids = []
+    @cart_products.each do |cart_product|
+      product_ids << cart_product.product_id
+    end
+
+    @products = []
+    product_ids.each do |id|
+      @products << Product.find(id)
+      # j'obtiens un array des instances, mais pas leur nom
+    end
   end
+
 
   def new
     @order = Order.new
@@ -33,10 +44,6 @@ class OrdersController < ApplicationController
   def order_params
     params.require(:order).permit(:address_line_1, :address_zipcode, :address_city, :country, :phone_number)
     # here i only allow the update of the delivery fields
-  end
-
-  def set_order
-    @order = Order.find(params[:id])
   end
 
 

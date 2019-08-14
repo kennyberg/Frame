@@ -27,3 +27,9 @@ Contact: <%= @order.phone_number %>
   </tr> -->
 
 </table>
+
+<% @products.each do |product| %>
+<%= product.photo.title %>
+<%= product.frame_combo.frame_material.name %>
+<%= product.frame_combo.frame_dimensions.name %>
+<% end %>
