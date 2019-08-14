@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_13_143151) do
+ActiveRecord::Schema.define(version: 2019_08_14_074535) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -70,6 +70,7 @@ ActiveRecord::Schema.define(version: 2019_08_13_143151) do
     t.bigint "supplier_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "amount_cents", default: 0, null: false
     t.index ["cart_id"], name: "index_orders_on_cart_id"
     t.index ["supplier_id"], name: "index_orders_on_supplier_id"
     t.index ["user_id"], name: "index_orders_on_user_id"
@@ -95,6 +96,7 @@ ActiveRecord::Schema.define(version: 2019_08_13_143151) do
     t.bigint "frame_combo_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "price_cents", default: 0, null: false
     t.index ["frame_combo_id"], name: "index_products_on_frame_combo_id"
     t.index ["photo_id"], name: "index_products_on_photo_id"
   end
