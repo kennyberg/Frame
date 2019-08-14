@@ -1,14 +1,18 @@
 <h1>Orders#show</h1>
 <p>Find me in app/views/orders/show.html.erb</p>
 
+<%= @order.state %>
+<%= humanized_money_with_symbol(@order.amount) %>
 
 <h1>Your detailed order</h1>
 
 <h2>Delivery address:</h2>
-<%= @order.current_user.first_name %> <%= @order.current_user.last_name %>,
+
+<%= @order.user.first_name %> <%= @order.user.last_name %>,
 <%= @order.address_line_1 %>
 <%= @order.address_zipcode %> <%= @order.address_city %>
 <%= @order.country %>
+
 
 Contact: <%= @order.phone_number %>
 
@@ -31,5 +35,6 @@ Contact: <%= @order.phone_number %>
 <% @products.each do |product| %>
 <%= product.photo.title %>
 <%= product.frame_combo.frame_material.name %>
-<%= product.frame_combo.frame_dimensions.name %>
+<%= product.frame_combo.frame_dimension.format %>
+<%= product.price %>
 <% end %>

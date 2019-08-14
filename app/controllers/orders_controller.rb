@@ -28,11 +28,12 @@ class OrdersController < ApplicationController
     @order = Order.new(order_params)
     @order.user_id = current_user.id
     @order.cart_id = params[:cart_id]
+    @cart = Cart.find(params[:cart_id])
+    @order.amount = @cart.total_price
+    @order.state = 'pending'
 
     if @order.save
-      @status = "pending"
-      # comment je change le status ici ?
-      redirect_to new_cart_order_path(@order.cart_id)
+      redirect_to new_order_payment_path(@order)
     else
       render "new"
     end
