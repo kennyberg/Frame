@@ -5,7 +5,17 @@ class PhotosController < ApplicationController
 
   def show
     @photo = Photo.find(params[:id])
-    # @frame_material =
+    @product = Product.new
+    @frame_dimensions = FrameDimension.all
+    @frame_materials = FrameMaterial.all
+
+    @prices = FrameCombo.all.map do |combo|
+      {
+        material: combo.frame_material_id,
+        dimension: combo.frame_dimension_id,
+        price: combo.price.fractional/100
+      }
+    end
     # @frame_combo = FrameCombo.where(frame_material: @frame_material).where(frame_dimension: @frame_dimension)
     # @product = Product.new(photo_id: @photo.id, frame_combo: @frame_combo)
   end

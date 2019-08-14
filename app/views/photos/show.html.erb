@@ -1,8 +1,30 @@
-<h1>Photos#show</h1>
-<p>Find me in app/views/photos/show.html.erb</p>
+
+<!-- below, show the photo -->
 
 <% if @photo.cl_url %>
   <%= cl_image_tag @photo.cl_url, height: 300, width: 400, crop: :fill %>
 <% else %>
-  <img src="<%= @photo.api_url %>" height="300" width="400" alt="test">
+  <img id="photoshow" src="<%= @photo.api_url %>" height="300" width="400" alt="test">
 <% end %>
+
+<!-- show the different frame_dimensions & frame_materials -->
+
+
+
+<!-- display the frame_combo.price that depends on the combination of frame_dimension
+and frame_material -->
+
+<!-- link to add to cart doing:
+  1. create a new product
+  2. detects if there is a "pending" cart, if not, create a new one
+  3. create a product_cart with the right product_id and cart_id
+ -->
+
+<!-- 1 -->
+
+<%= render 'product', product: @product %>
+
+<!-- 2 -->
+
+
+<!-- 3 -->

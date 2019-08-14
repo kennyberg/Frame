@@ -1,0 +1,20 @@
+<%= simple_form_for([@photo, @product]) do |f| %>
+  <!-- [...] -->
+  <select name="frame[dimension]" id="">
+    <% @frame_dimensions.each do |dimension| %>
+      <option value="<%= dimension.id %>"><%= dimension.format %></option>
+    <% end %>
+  </select>
+
+  <select name="frame[material]" id="prices", data-prices="<%= @prices.to_json %>">
+    <% @frame_materials.each do |material| %>
+      <option value="<%= material.id %>"><%= material.name %></option>
+    <% end %>
+  </select>
+
+  <%= f.button :submit %>
+  <!-- [...] -->
+<% end %>
+
+<!-- document.querySelector("#prices").dataset.prices -->
+<!-- JSON.parse(price) -->
