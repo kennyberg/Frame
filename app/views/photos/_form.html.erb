@@ -1,0 +1,8 @@
+<%= simple_form_for photo do |f| %>
+  <!-- [...] -->
+  <%= f.input :title %>
+  <%= f.input :upload %>
+  <%= f.input :upload_cache, as: :hidden %>
+  <%= f.button :submit %>
+  <!-- [...] -->
+<% end %>
