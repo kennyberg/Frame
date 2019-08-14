@@ -1,5 +1,7 @@
 require 'open-uri'
 
+# -------------------------------------------------- SUPPLIERS
+
 supplier_attributes = [
    {
     company_name: 'Imprimeur & Encadreur 1978',
@@ -28,6 +30,8 @@ supplier_attributes = [
 ]
 Supplier.create!(supplier_attributes)
 
+# -------------------------------------------------- USERS
+
 user_attributes = [
   {
     email: 'kenny@gmail.com',
@@ -45,24 +49,40 @@ user_attributes = [
 ]
 User.create!(user_attributes)
 
-# --------------------------------------------------
+# -------------------------------------------------- PHOTOS
 
-# photo_1 = Photo.new(
-#   title: "A beautiful photo",
-#   remote_api_url: "https://images.pexels.com/photos/2174656/pexels-photo-2174656.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
-# )
-# photo_1.remote_api_url = "https://images.pexels.com/photos/2174656/pexels-photo-2174656.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
-# photo_1.save!
+photo_attributes = [
+  {
+    api_url: "http://sebelas-am-motion.com/wp-content/uploads/2015/03/camera-photography-art-photo-hd-orvya0bsf.jpg"
+  },
 
-# http://sebelas-am-motion.com/wp-content/uploads/2015/03/camera-photography-art-photo-hd-orvya0bsf.jpg
-# https://images.unsplash.com/photo-1533142266415-ac591a4deae9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80
-# https://images.pexels.com/photos/2132126/pexels-photo-2132126.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260
-# https://images.pexels.com/photos/2662086/pexels-photo-2662086.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260
-# https://images.pexels.com/photos/2249602/pexels-photo-2249602.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260
-# https://images.pexels.com/photos/2533092/pexels-photo-2533092.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260
-# https://images.pexels.com/photos/2155749/pexels-photo-2155749.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260
+  {
+    api_url: "https://images.unsplash.com/photo-1533142266415-ac591a4deae9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80"
+  },
 
-# --------------------------------------------------
+  {
+    api_url: "https://images.pexels.com/photos/2132126/pexels-photo-2132126.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+  },
+
+  {
+    api_url: "https://images.pexels.com/photos/2662086/pexels-photo-2662086.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+  },
+
+  {
+    api_url: "https://images.pexels.com/photos/2249602/pexels-photo-2249602.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+  },
+
+  {
+    api_url: "https://images.pexels.com/photos/2533092/pexels-photo-2533092.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+  },
+
+  {
+    api_url: "https://images.pexels.com/photos/2155749/pexels-photo-2155749.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+  }
+]
+Photo.create!(photo_attributes)
+
+# -------------------------------------------------- FRAMES
 
 frame_material_attributes = [
   {
@@ -140,6 +160,122 @@ frame_combo_attributes = [
   }
 ]
 FrameCombo.create!(frame_combo_attributes)
+
+# -------------------------------------------------- PRODUCTS
+
+product_attributes = [
+  {
+    photo_id: 1,
+    frame_combo_id: 1
+  },
+
+  {
+    photo_id: 3,
+    frame_combo_id: 2
+  },
+
+  {
+    photo_id: 4,
+    frame_combo_id: 3
+  }
+]
+Product.create!(product_attributes)
+
+# -------------------------------------------------- CARTS
+
+cart_attributes = [
+  {
+    user_id: 1,
+    total_price: 240,
+    state: "pending"
+  },
+
+  {
+    user_id: 1,
+    total_price: 240,
+    state: "paid"
+  },
+
+  {
+    user_id: 2,
+    total_price: 240,
+    state: "pending"
+  },
+
+  {
+    user_id: 2,
+    total_price: 240,
+    state: "paid"
+  }
+]
+Cart.create!(cart_attributes)
+
+# -------------------------------------------------- CART PRODUCTS
+
+cart_product_attributes = [
+  {# Kenny's pending cart
+    product_id: 1,
+    cart_id: 1
+  },
+
+  {# Kenny's pending cart
+    product_id: 2,
+    cart_id: 1
+  },
+
+  {# Kenny's pending cart
+    product_id: 3,
+    cart_id: 1
+  },
+
+  {# Kenny's paid cart
+    product_id: 3,
+    cart_id: 2
+  },
+
+  {# Kenny's paid cart
+    product_id: 3,
+    cart_id: 2
+  },
+
+  {# Kenny's paid cart
+    product_id: 3,
+    cart_id: 2
+  },
+
+  {# Caroline's pending cart
+    product_id: 1,
+    cart_id: 3
+  },
+
+  {# Caroline's pending cart
+    product_id: 2,
+    cart_id: 3
+  },
+
+  {# Caroline's pending cart
+    product_id: 3,
+    cart_id: 3
+  },
+
+  {# Caroline's paid cart
+    product_id: 3,
+    cart_id: 4
+  },
+
+  {# Caroline's paid cart
+    product_id: 3,
+    cart_id: 4
+  },
+
+  {# Caroline's paid cart
+    product_id: 3,
+    cart_id: 4
+  },
+]
+CartProduct.create!(cart_product_attributes)
+
+# -------------------------------------------------- END OF THE SEED
 
 puts "Finished"
 

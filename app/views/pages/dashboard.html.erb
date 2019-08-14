@@ -1,0 +1,14 @@
+
+<!-- Below, display the photos in the user's current cart -->
+
+<h1>Your current cart</h1>
+<% @products_in_current_cart.each do |product| %>
+  <a href="/photos/<%=Product.find(product.id).photo_id%>"><img src="<%= Photo.find(Product.find(product.id).photo_id).api_url %>" height="150" width="200" alt="test"></a>
+<% end %>
+
+<!-- Below, display the the user's previous orders (just display the price for now) -->
+
+<h1>Your previous orders</h1>
+<% @previous_carts.each do |cart| %>
+  <%= cart.total_price %>
+<% end %>

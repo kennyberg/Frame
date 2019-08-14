@@ -1,9 +1,4 @@
 Rails.application.routes.draw do
-  get 'photos/index'
-  get 'photos/show'
-  get 'photos/new'
-  get 'photos/create'
-  get 'photos/destroy'
   devise_for :users
   root to: 'pages#home'
   get '/dashboard', to: 'pages#dashboard', as: 'user_dashboard'
@@ -12,8 +7,8 @@ Rails.application.routes.draw do
   end
   resources :cart_products, only: [:destroy]
   resources :carts, only: [:show] do
-    resources :orders, only: [:create]
+    resources :orders, only: [:new, :create]
   end
-  resources :orders, only: [:show, :edit, :update]
+  resources :orders, only: [:show]
 end
 
