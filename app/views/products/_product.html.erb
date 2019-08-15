@@ -1,0 +1,22 @@
+<%= simple_form_for(@product) do |f| %>
+<!-- below, we display all the frame_dimensions existing in a dropdown menu by using the select element. The value that we assign (i.e. material.id) is the value that we'll be able the retrieve when the user chooses a particular option. We add an id to the select element so that we can document.querySelector("#id_name") with js.
+ -->
+  <select name="frame[dimension]" id="dimension">
+    <% @frame_dimensions.each do |dimension| %>
+      <option value="<%= dimension.id %>"><%= dimension.format %></option>
+    <% end %>
+  </select>
+
+<!-- below, we display all the frame_material existing in a dropdown menu by using the select element. The value that we assign (i.e. material.id) is the value that we'll be able the retrieve when the user chooses a particular option. We add an id to the select element so that we can document.querySelector("#id_name") with js.
+ -->
+  <select name="frame[material]" id="material">
+    <% @frame_materials.each do |material| %>
+      <option value="<%= material.id %>"><%= material.name %></option>
+    <% end %>
+  </select>
+
+  <div style="display: none" id="prices", data-prices="<%= @prices.to_json %>"></div>
+
+  <%= f.button :submit %>
+  <!-- [...] -->
+<% end %>

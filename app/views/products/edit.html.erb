@@ -1,0 +1,17 @@
+<h1>Products#edit</h1>
+<p>Find me in app/views/products/create.html.erb</p>
+
+<!-- below, show the photo -->
+
+<% if @photo.cl_url %>
+  <%= cl_image_tag @photo.cl_url, height: 300, width: 400, crop: :fill %>
+<% else %>
+  <img id="photoshow" src="<%= @photo.api_url %>" height="300" width="400" alt="test">
+<% end %>
+
+<%= render 'product', product: @product %>
+
+<!-- below, we display a default price so that the user doesn't need to active an eventlistener to have a price displayed. The default price chosen depends on the frame_combo that appears by default on the photo#show page. The frame_combo that appears by default depends on the first frame_combo created in the seed
+-->
+<p id="priceBox">€ 39</p>
+

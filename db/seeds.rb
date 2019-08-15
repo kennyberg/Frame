@@ -45,6 +45,13 @@ user_attributes = [
     first_name: 'caroline',
     last_name: 'dupre',
     password: "password"
+  },
+
+  {
+    email: 'tester@gmail.com',
+    first_name: 'tester',
+    last_name: 'tester',
+    password: "password"
   }
 ]
 User.create!(user_attributes)
@@ -157,7 +164,37 @@ frame_combo_attributes = [
     frame_material_id: 2,
     frame_dimension_id: 5,
     price: 180
-  }
+  },
+
+  {
+    frame_material_id: 1,
+    frame_dimension_id: 1,
+    price: 39
+  },
+
+  {
+    frame_material_id: 1,
+    frame_dimension_id: 2,
+    price: 70
+  },
+
+  {
+    frame_material_id: 1,
+    frame_dimension_id: 3,
+    price: 99
+  },
+
+  {
+    frame_material_id: 1,
+    frame_dimension_id: 4,
+    price: 110
+  },
+
+  {
+    frame_material_id: 1,
+    frame_dimension_id: 5,
+    price: 150
+  },
 ]
 FrameCombo.create!(frame_combo_attributes)
 

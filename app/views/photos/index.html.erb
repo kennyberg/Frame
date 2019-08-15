@@ -2,5 +2,7 @@
 <p>Find me in app/views/photos/index.html.erb</p>
 
 <% @photos.each do |photo| %>
-  <a href="/photos/<%=photo.id%>"><img href="/photos/<%=photo.id%>" src="<%= photo.api_url %>" height="300" width="400" alt="test"></a>
+  <a href="/photos/<%=photo.id%>"><img id="photoindex" src="<%= photo.api_url %>" height="300" alt="test"></a>
 <% end %>
+
+

@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :photos, except: [:edit, :update] do
     resources :products, only: [:create]
   end
+  resources :products, only: [:edit, :update, :destroy]
   resources :cart_products, only: [:destroy]
   resources :carts, only: [:show] do
     resources :orders, only: [:new, :create]
@@ -13,4 +14,3 @@ Rails.application.routes.draw do
     resources :payments, only: [:new, :create]
   end
 end
-
