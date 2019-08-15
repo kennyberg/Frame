@@ -1,3 +1,4 @@
+
 const showPrice = (price) => {
   document.querySelector("#priceBox").innerHTML = "€ " + price
 }
@@ -27,3 +28,5 @@ const displayPrice = () => {
 }
 
 export {displayPrice};
+
+// "[{"material":2,"dimension":1,"price":50},{"material":2,"dimension":2,"price":80},{"material":2,"dimension":3,"price":110},{"material":2,"dimension":4,"price":140},{"material":2,"dimension":5,"price":180},{"material":1,"dimension":1,"price":39},{"material":1,"dimension":2,"price":70},{"material":1,"dimension":3,"price":99},{"material":1,"dimension":4,"price":110},{"material":1,"dimension":5,"price":150}]"
