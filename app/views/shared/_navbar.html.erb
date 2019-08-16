@@ -7,6 +7,18 @@
     <span class="navbar-toggler-icon"></span>
   </button>
 
+<!-- BEGINNING OF SEARCH BAR -->
+
+  <%= form_tag photos_path, method: :get do %>
+    <%= text_field_tag :query,
+      params[:query],
+      class: "form-control",
+      placeholder: "Search for framable photos"
+    %>
+    <%= submit_tag "Search", class: "btn btn-primary" %>
+  <% end %>
+
+<!-- END OF SEARCH BAR -->
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
