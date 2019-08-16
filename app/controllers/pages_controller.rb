@@ -12,7 +12,7 @@ class PagesController < ApplicationController
     @uploaded_photos = Photo.where(user_id: current_user.id)
     # below, for previous orders section
     @previous_carts = Cart.where(user_id: current_user.id).where(state: "paid")
-    # still need to do the same for user's wishlists
+    # still need to do the same for user's favorites
     # still need to do the same for user's information
   end
 end
