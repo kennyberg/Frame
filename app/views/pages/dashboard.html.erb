@@ -2,22 +2,24 @@
 <!-- BEGINNING OF THE CURRENT CART SECTION -->
 <!-- Below, display the photos in the user's current cart -->
 <h1>Your current cart</h1>
-<% @products_in_current_cart.each do |product| %>
+<% @products_in_current_cart.each do |cart_product| %>
+
+<% @photo = Photo.find(Product.find(cart_product.product_id).photo_id) %>
 
 <!-- photo scraped and added in the cart -->
-<% if Photo.find(Product.find(product.product_id).photo_id).api_url %>
-    <img src="<%= Photo.find(Product.find(product.product_id).photo_id).api_url %>" height="150" width="200" alt="test">
+<% if @photo.api_id %>
+    <img src="<%= Photo.find(Product.find(cart_product.product_id).photo_id).api_url %>" height="150" width="200" alt="test">
     <p>
-    <%= link_to 'Update', edit_product_path(product.product_id) %>
-    <%= link_to 'Remove', product_path(product.product_id), data: { confirm: "Are you sure?" }, method: :delete %>
+    <%= link_to 'Update', edit_product_path(@photo.id) %>
+    <%= link_to 'Remove', product_path(cart_product.id), data: { confirm: "Are you sure?" }, method: :delete %>
     </p>
 
 <!-- photo uploaded by the user and in the current cart -->
   <% else %>
-    <%= cl_image_tag Photo.find(Product.find(product.product_id).photo_id).cl_url, height: 150, width: 200, crop: :fill, id: 'uploaded-image' %>
+    <%= cl_image_tag @photo.cl_url, height: 150, width: 200, crop: :fill, id: 'uploaded-image' %>
     <p>
-    <%= link_to 'Update', edit_product_path(product.product_id) %>
-    <%= link_to 'Remove', product_path(product.product_id), data: { confirm: "Are you sure?" }, method: :delete %>
+    <%= link_to 'Update', edit_product_path(@photo.id) %>
+    <%= link_to 'Remove', product_path(@photo.id), data: { confirm: "Are you sure?" }, method: :delete %>
     </p>
   <% end %>
 <% end %>
@@ -32,7 +34,7 @@
     <%= cl_image_tag photo.cl_url, height: 150, width: 200, crop: :fill, id: 'uploaded-image' %>
     <p>
     <%= link_to "Frame", photo_path(photo.id) %> |
-    <%= link_to "Remove", photo_path(photo.id), data: { confirm: "Are you sure?" }, method: :delete %>
+    <%= link_to "Remove", photo_path(photo.id), data: { confirm: "You will no longer be able to print that photo. Are you sure?" }, method: :delete %>
     </p>
   <% end %>
 <% else %>

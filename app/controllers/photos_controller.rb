@@ -1,10 +1,18 @@
 class PhotosController < ApplicationController
   def index
-    @photos = Photo.where(cl_url: nil) # we don't display the photos uploaded by the user on the index page
+    url = "https://api.pexels.com/v1/search?query=travel+query&per_page=10&page=1"
+    @json_results = RestClient.get(url, headers = { Authorization: ENV['PEXELS_API_KEY'] })
+    @results = JSON.parse(@json_results)
+    @photos = @results["photos"]
   end
 
   def show
     @photo = Photo.find(params[:id])
+      if @photo.api_id
+        url = "https://api.pexels.com/v1/photos/#{@photo.api_id}"
+        @json_results = RestClient.get(url, headers = { Authorization: ENV['PEXELS_API_KEY'] })
+        @photo_api = JSON.parse(@json_results)
+      end
     @product = Product.new
     # below, we retrieve the dimensions and materials available to display them in dropdown menus
     @frame_dimensions = FrameDimension.all
@@ -29,21 +37,40 @@ class PhotosController < ApplicationController
   end
 
   def create
-    @photo = Photo.new(photo_params)
-    # below, we make sure that the photo uploaded by the user only belongs to him and not the other users
-    @photo.user_id = current_user.id
-    # below, allows us to get the cloudinary link of the photo
-    @photo.cl_url = "https://res.cloudinary.com/kbframe/#{@photo.upload.identifier}"
-    if @photo.save
-      redirect_to photo_path(@photo.id)
+    if params["photo"]["api_id"]
+      if Photo.where(api_id: params["photo"]["api_id"]).first
+        @photo = Photo.where(api_id: params["photo"]["api_id"]).first
+        redirect_to photo_path(@photo.id)
+      else
+        @photo = Photo.new
+        @photo.api_id = params["photo"]["api_id"]
+        @photo.api_url = params["photo"]["api_url"]
+        @photo.save
+        redirect_to photo_path(@photo.id)
+      end
     else
-      render 'new'
+      @photo = Photo.new(photo_params)
+      # below, we make sure that the photo uploaded by the user only belongs to him and not the other users
+      @photo.user_id = current_user.id
+      # below, allows us to get the cloudinary link of the photo
+      @photo.cl_url = "https://res.cloudinary.com/kbframe/#{@photo.upload.identifier}"
+      if @photo.save
+        redirect_to photo_path(@photo.id)
+      else
+        render 'new'
+      end
     end
   end
 
   def destroy
     @photo = Photo.find(params[:id])
-    @photo.upload.file.delete
+    @products = Product.where(photo: @photo)
+    @current_cart = Cart.where(user_id: current_user.id).where(state: "pending").first
+    if @cart_product = CartProduct.where(cart: @current_cart).where(product: @product).first
+      @cart_product.destroy
+    end
+    @products.destroy_all
+    # @photo.upload.file.delete
     @photo.destroy
     redirect_to user_dashboard_path
   end

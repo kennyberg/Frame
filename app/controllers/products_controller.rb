@@ -10,10 +10,13 @@ class ProductsController < ApplicationController
     # below, we locate the current cart of the user by looking for the cart with a pending state
     @current_cart = Cart.where(user_id: current_user.id).where(state: "pending").first
     # then, we find the cart_product that has the product that we want and belonging to the right cart
-    @product_in_current_cart_products = CartProduct.where(product_id: @product.id).where(cart_id: @current_cart.id).first
+    if CartProduct.where(product_id: @product.id).where(cart_id: @current_cart.id).first
+      @product_in_current_cart_products = CartProduct.where(product_id: @product.id).where(cart_id: @current_cart.id).first
     # finally, we destroy the product from the user's cart
-    @product_in_current_cart_products.destroy
+      @product_in_current_cart_products.destroy
+    end
     redirect_to user_dashboard_path
+    # @products_in_current_cart = CartProduct.where(cart_id: @current_cart.id)
   end
 
   def edit

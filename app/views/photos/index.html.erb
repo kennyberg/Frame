@@ -2,7 +2,41 @@
 <p>Find me in app/views/photos/index.html.erb</p>
 
 <% @photos.each do |photo| %>
-  <a href="/photos/<%=photo.id%>"><img id="photoindex" src="<%= photo.api_url %>" height="300" alt="test"></a>
+  <img id="photoindex" data-id = "<%= photo['id'] %>" src="<%= photo["src"]["large2x"]%>" height="300" alt="test">
+</a>
+<% end %>
+
+<%= simple_form_for Photo.new do |f| %>
+  <%= f.input :api_id, :as => :hidden %>
+  <%= f.input :api_url, :as => :hidden %>
 <% end %>
 
 
+
+<!-- <p>
+  Photo ID:<%#= photo["id"] %>
+  Width:<%#= photo["width"] %>
+  Height:<%#= photo["height"] %>
+  HD:<%#= photo["src"]["original"] %>
+  Large:<%#= photo["src"]["large2x"] %>
+  Medium:<%#= photo["src"]["medium"] %>
+</p> -->
+
+<script>
+  const photos = document.querySelectorAll("#photoindex")
+  const form_id = document.querySelector("#photo_api_id")
+  const form_url = document.querySelector("#photo_api_url")
+
+  photos.forEach((photo) => {
+
+    photo.addEventListener('click', (e) => {
+      form_id.value = photo.dataset.id
+      form_url.value = photo.src
+      document.querySelector("#new_photo").submit()
+    })
+  })
+</script>
+
+<!-- document.querySelector("#new_photo").submit() -->
+<!-- document.querySelector("#photo_api_url").value = 23 -->
+<!-- document.querySelector("#photoindex").dataset.id -->
