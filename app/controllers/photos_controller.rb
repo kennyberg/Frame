@@ -1,6 +1,5 @@
 class PhotosController < ApplicationController
   def index
-
     if params[:query] && params[:query] != ""
       @query = params[:query]
       url = "https://api.pexels.com/v1/search?query=#{@query}+query&per_page=10&page=1"
