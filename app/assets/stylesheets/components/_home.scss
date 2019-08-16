@@ -1,0 +1,44 @@
+.container-banner {
+    background-size: cover;
+    background-position: center;
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .this-is-flex {
+    display: flex;
+    margin: 0px 50px;
+  }
+
+  #banner-title {
+  font-size: 24px;
+  font-family: 'Quicksand', sans-serif;
+  color: $black;
+  }
+
+  .white-flex {
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 35px;
+    width: 53vw;
+    border-radius: 2px;
+
+  }
+
+   .small-paragraph {
+    margin-top: 10px;
+    text-align: justify;
+    max-width: 400px;
+    padding: 10px 70px 10px 70px;
+  }
+
+   .small-paragraph h2 {
+    text-align: center;
+   }
+
+ .big-number {
+    font-size: 40px;
+    font-family: 'Playfair Display', serif;
+    text-align: center;
+  }
