@@ -1,0 +1,14 @@
+<h1>Carts#show</h1>
+<p>Find me in app/views/carts/show.html.erb</p>
+
+
+<% @products.each do |product| %>
+<%= product.photo.title %>
+<%= product.frame_combo.frame_material.name %>
+<%= product.frame_combo.frame_dimension.format %>
+<%= product.price %>
+<% end %>
+
+<<h2>Your total cart</h2>
+quantity: <%= @quantity  %>
+total price: EUR <%= @total_price %>

@@ -200,23 +200,26 @@ FrameCombo.create!(frame_combo_attributes)
 
 # -------------------------------------------------- PRODUCTS
 
-# product_attributes = [
-#   {
-#     photo_id: 1,
-#     frame_combo_id: 1
-#   },
+product_attributes = [
+  {
+    photo_id: 1,
+    frame_combo_id: 1,
+    price: FrameCombo.find(1).price
+  },
 
-#   {
-#     photo_id: 3,
-#     frame_combo_id: 2
-#   },
+  {
+    photo_id: 3,
+    frame_combo_id: 2,
+    price: FrameCombo.find(2).price
+  },
 
-#   {
-#     photo_id: 4,
-#     frame_combo_id: 3
-#   }
-# ]
-# Product.create!(product_attributes)
+  {
+    photo_id: 4,
+    frame_combo_id: 3,
+    price: FrameCombo.find(3).price
+  }
+]
+Product.create!(product_attributes)
 
 # -------------------------------------------------- CARTS
 

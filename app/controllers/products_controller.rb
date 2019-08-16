@@ -58,6 +58,7 @@ class ProductsController < ApplicationController
     @frame_combo = FrameCombo.where(frame_material_id: params[:frame][:material]).where(frame_dimension_id: params[:frame][:dimension]).first
     # we assign the photo & frame_combo chosen by the user to the product (a product is composed of a photo + a frame_combo)
     @product.photo = @photo
+    @product.price = @frame_combo.price
     @product.frame_combo = @frame_combo
     if @product.save
       # we make sure that if a cart with a pending state currently exists, the user put that product in that cart
