@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get '/dashboard', to: 'pages#dashboard', as: 'user_dashboard'
   resources :photos, except: [:edit, :update] do
     resources :products, only: [:create]
+    resources :favorites, only: [:create, :destroy]
   end
   resources :products, only: [:edit, :update, :destroy]
   resources :cart_products, only: [:destroy]
@@ -14,3 +15,4 @@ Rails.application.routes.draw do
     resources :payments, only: [:new, :create]
   end
 end
+
