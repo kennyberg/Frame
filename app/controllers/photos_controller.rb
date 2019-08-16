@@ -1,9 +1,18 @@
 class PhotosController < ApplicationController
   def index
-    url = "https://api.pexels.com/v1/search?query=travel+query&per_page=10&page=1"
-    @json_results = RestClient.get(url, headers = { Authorization: ENV['PEXELS_API_KEY'] })
-    @results = JSON.parse(@json_results)
-    @photos = @results["photos"]
+
+    if params[:query] && params[:query] != ""
+      @query = params[:query]
+      url = "https://api.pexels.com/v1/search?query=#{@query}+query&per_page=10&page=1"
+      @json_results = RestClient.get(url, headers = { Authorization: ENV['PEXELS_API_KEY'] })
+      @results = JSON.parse(@json_results)
+      @photos = @results["photos"]
+    else
+      url = "https://api.pexels.com/v1/curated?per_page=10&page=1"
+      @json_results = RestClient.get(url, headers = { Authorization: ENV['PEXELS_API_KEY'] })
+      @results = JSON.parse(@json_results)
+      @photos = @results["photos"]
+    end
   end
 
   def show
