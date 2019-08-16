@@ -4,7 +4,7 @@
 <% if @photo.cl_url %>
   <%= cl_image_tag @photo.cl_url, height: 300, width: 400, crop: :fill %>
 <% else %>
-  <img id="photoshow" src="<%= @photo.api_url %>" height="300" width="400" alt="test">
+  <img id="photoshow" src="<%= @photo_api["src"]["large2x"] %>" height="300" width="400" alt="test">
 <% end %>
 
 <%= render 'product', product: @product %>
