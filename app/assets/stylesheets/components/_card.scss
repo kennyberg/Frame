@@ -1,0 +1,33 @@
+.large-card {
+  background-size: cover;
+  background-position: top;
+  max-width: 40%;
+  border-radius: 2px;
+  flex-direction: column;
+  display: flex;
+  justify-content: flex-start;
+  // align-items: center;
+  // flex-wrap: wrap;
+  // align-self: center;
+  height: 300px;
+  width: 80vw;
+}
+
+.large-card-item {
+    // margin-top: 10px;
+    text-align: justify;
+    // max-width: 400px;
+    // padding: 10px 70px 10px 70px;
+}
+
+.large-card h1 {
+  font-size: 24px;
+  color: white;
+
+
+}
+
+.large-card h2 {
+  font-size: 16px;
+  color: white;
+}
