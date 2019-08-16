@@ -1,15 +1,16 @@
 // Import Google fonts
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,300,700|Raleway:400,100,300,700,500");
 @import url('https://fonts.googleapis.com/css?family=Beth+Ellen|Lato:300,400,400i,700,900|Quicksand:300,400,500,600,700&display=swap');
-
+@import url('https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700&display=swap');
 // Define fonts for body and headers
 $body-font: "Lato","Open Sans", "Helvetica", "sans-serif";
 $headers-font: "Quicksand","Raleway", "Helvetica", "sans-serif";
 
 // FRAME >> Helper for the font-familieswe will use:
-// font-family: 'Beth Ellen', cursive;
 // font-family: 'Quicksand', sans-serif;
 // font-family: 'Lato', sans-serif;
+// LOGO FRAME > font-family: 'Playfair Display', serif;
+// JUST handwritting texts: font-family: 'Beth Ellen', cursive;
 
 // To use a font file (.woff) uncomment following lines
 // @font-face {
