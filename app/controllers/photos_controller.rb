@@ -1,6 +1,5 @@
 class PhotosController < ApplicationController
   def index
-    # @photos = Photo.where(cl_url: nil) # we don't display the photos uploaded by the user on the index page
     url = "https://api.pexels.com/v1/search?query=travel+query&per_page=10&page=1"
     @json_results = RestClient.get(url, headers = { Authorization: ENV['PEXELS_API_KEY'] })
     @results = JSON.parse(@json_results)
