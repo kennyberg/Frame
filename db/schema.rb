@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_15_123048) do
+ActiveRecord::Schema.define(version: 2019_08_16_062123) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,15 @@ ActiveRecord::Schema.define(version: 2019_08_15_123048) do
     t.datetime "updated_at", null: false
     t.string "state"
     t.index ["user_id"], name: "index_carts_on_user_id"
+  end
+
+  create_table "favorites", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "photo_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["photo_id"], name: "index_favorites_on_photo_id"
+    t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
   create_table "frame_combos", force: :cascade do |t|
@@ -127,18 +136,11 @@ ActiveRecord::Schema.define(version: 2019_08_15_123048) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  create_table "wishlists", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "photo_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["photo_id"], name: "index_wishlists_on_photo_id"
-    t.index ["user_id"], name: "index_wishlists_on_user_id"
-  end
-
   add_foreign_key "cart_products", "carts"
   add_foreign_key "cart_products", "products"
   add_foreign_key "carts", "users"
+  add_foreign_key "favorites", "photos"
+  add_foreign_key "favorites", "users"
   add_foreign_key "frame_combos", "frame_dimensions"
   add_foreign_key "frame_combos", "frame_materials"
   add_foreign_key "orders", "carts"
@@ -147,6 +149,4 @@ ActiveRecord::Schema.define(version: 2019_08_15_123048) do
   add_foreign_key "photos", "users"
   add_foreign_key "products", "frame_combos"
   add_foreign_key "products", "photos"
-  add_foreign_key "wishlists", "photos"
-  add_foreign_key "wishlists", "users"
 end
