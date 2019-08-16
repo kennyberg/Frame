@@ -3,7 +3,6 @@
 
 <% @photos.each do |photo| %>
   <img id="photoindex" data-id = "<%= photo['id'] %>" src="<%= photo["src"]["large2x"]%>" height="300" alt="test">
-</a>
 <% end %>
 
 <%= simple_form_for Photo.new do |f| %>
