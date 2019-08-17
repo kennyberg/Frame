@@ -3,34 +3,42 @@
     background-position: center;
     height: 90vh;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    justify-content: left;
+    align-items: flex-end;
   }
 
   .this-is-flex {
     display: flex;
     margin: 0px 50px;
+    padding: 45px 5px;
+    flex-wrap: wrap;
+    justify-content: space-between;
   }
 
   #banner-title {
-  font-size: 24px;
+  font-size: 26px;
   font-family: 'Quicksand', sans-serif;
   color: $black;
+  margin-bottom: 40px;
+  font-style: medium;
+  font-weight: 500;
   }
 
   .white-flex {
-    background-color: rgba(255, 255, 255, 0.7);
+    background-color: rgba(255, 255, 255, 0.77);
     padding: 35px;
-    width: 53vw;
+    // attention ne pas toucher le padding, same que les cartes
+    min-width: 50vw;
     border-radius: 2px;
-
+    margin-bottom: 50px;
+    text-align: center;
   }
 
    .small-paragraph {
     margin-top: 10px;
     text-align: justify;
-    max-width: 400px;
-    padding: 10px 50px 10px 50px;
+    max-width: 350px;
+    padding: 10px 30px 10px 30px;
   }
 
    .small-paragraph h2 {

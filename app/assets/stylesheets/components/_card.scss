@@ -1,16 +1,42 @@
+  .this-is-flex-card {
+    display: flex;
+    margin: 0px 50px;
+    padding: 45px 5px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+  }
+
+
+
 .large-card {
-  background-size: cover;
-  background-position: top;
-  max-width: 40%;
-  border-radius: 2px;
-  flex-direction: column;
-  display: flex;
-  justify-content: flex-start;
-  // align-items: center;
-  // flex-wrap: wrap;
-  // align-self: center;
-  height: 300px;
-  width: 80vw;
+
+    display: flex;
+    padding: 35px;
+        // attention ne pas toucher le padding, same que les paragraphes
+    min-width: 43vw;
+    min-height: 100vh;
+    border-radius: 2px;
+    margin-bottom: 50px;
+    text-align: center;
+    flex-wrap: wrap;
+    background-size: cover;
+    background-position: center;
+    flex-direction: column;
+
+
+
+
+
+  // background-size: cover;
+  // background-position: top;
+  // max-width: 40%;
+  // border-radius: 2px;
+  // flex-direction: column;
+  // display: flex;
+  // justify-content: flex-start;
+  // height: 300px;
+  // width: 80vw;
 }
 
 .large-card-item {
