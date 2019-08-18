@@ -1,21 +1,21 @@
   .this-is-flex-card {
     display: flex;
     margin: 0px 50px;
-    padding: 45px 5px;
+    padding: 0px 5px;
+            // attention ne pas toucher le padding, same que les paragraphes
     flex-wrap: wrap;
     justify-content: space-between;
 
   }
 
-
-
 .large-card {
 
     display: flex;
-    padding: 35px;
+    padding: 25px;
         // attention ne pas toucher le padding, same que les paragraphes
     min-width: 43vw;
-    min-height: 100vh;
+    min-height: 85vh;
+    max-height: 100vw;
     border-radius: 2px;
     margin-bottom: 50px;
     text-align: center;
@@ -23,37 +23,20 @@
     background-size: cover;
     background-position: center;
     flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    text-align: left;
 
-
-
-
-
-  // background-size: cover;
-  // background-position: top;
-  // max-width: 40%;
-  // border-radius: 2px;
-  // flex-direction: column;
-  // display: flex;
-  // justify-content: flex-start;
-  // height: 300px;
-  // width: 80vw;
-}
-
-.large-card-item {
-    // margin-top: 10px;
-    text-align: justify;
-    // max-width: 400px;
-    // padding: 10px 70px 10px 70px;
 }
 
 .large-card h1 {
   font-size: 24px;
   color: white;
-
-
+  font-style: medium;
 }
 
 .large-card h2 {
   font-size: 16px;
   color: white;
+  font-style: medium;
 }
