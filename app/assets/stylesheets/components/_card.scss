@@ -12,8 +12,8 @@
     display: flex;
     padding: 25px;
         // attention ne pas toucher le padding, same que les paragraphes
-    min-width: 43vw;
-    min-height: 65vh;
+    min-width: 40vw;
+    min-height: 55vh;
 
     border-radius: 2px;
     margin-bottom: 50px;
@@ -27,7 +27,11 @@
     text-align: left;
 }
 
-.align-left {}
+.align-left {
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+}
 
 
 .large-card h1 {
