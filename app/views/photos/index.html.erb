@@ -18,7 +18,7 @@
 <div class="d-flex w-100 flex-wrap">
   <% @photos.each do |photo| %>
     <div class="photo-container" >
-      <img class="photoindex" data-id = "<%= photo['id'] %>" src="<%= photo["src"]["large2x"]%>" height="300" alt="test">
+      <img id="photoindex" data-id = "<%= photo['id'] %>" src="<%= photo["src"]["large2x"]%>" data-height = "<%= photo['height'] %>" data-width = "<%= photo['width'] %>" height="300" alt="test">
       <i class="fas fa-heart" data-id = "<%= photo['id'] %>" data-src="<%= photo["src"]["large2x"]%>"></i>
     </div>
 <% end %>
@@ -46,10 +46,8 @@
   Medium:<%#= photo["src"]["medium"] %>
 </p> -->
 
-<script>
-
-  // This is a form for a new photo
-  const photos = document.querySelectorAll(".photoindex")
+<script> // FILTER PORTRAIT & LANDSCAPE
+  const photos = document.querySelectorAll("#photoindex")
   const portrait = document.querySelector("#portrait")
   const landscape = document.querySelector("#landscape")
 
@@ -72,8 +70,7 @@
   })
 </script>
 
-<script>
-  const photos = document.querySelectorAll("#photoindex")
+<script> // WHEN USER CLICKS ON A PHOTO, CREATE A NEW PHOTO
   const form_id = document.querySelector("#photo_api_id")
   const form_url = document.querySelector("#photo_api_url")
   const form_height = document.querySelector("#photo_height")
@@ -90,7 +87,9 @@
       document.querySelector("#new_photo").submit()
     })
   })
-  //This is a form for a new favorite
+</script>
+
+<script> // NEW FAVORITE
   const favoritesForm = document.querySelector("#new_favorite")
   const hearts = document.querySelectorAll(".fa-heart")
   const apiUrl = document.querySelector("#favorite_api_url")
