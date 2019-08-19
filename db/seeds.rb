@@ -200,55 +200,55 @@ FrameCombo.create!(frame_combo_attributes)
 
 # -------------------------------------------------- PRODUCTS
 
-product_attributes = [
-  {
-    photo_id: 1,
-    frame_combo_id: 1,
-    price: FrameCombo.find(1).price
-  },
+# product_attributes = [
+#   {
+#     photo_id: 1,
+#     frame_combo_id: 1,
+#     price: FrameCombo.find(1).price
+#   },
 
-  {
-    photo_id: 3,
-    frame_combo_id: 2,
-    price: FrameCombo.find(2).price
-  },
+#   {
+#     photo_id: 3,
+#     frame_combo_id: 2,
+#     price: FrameCombo.find(2).price
+#   },
 
-  {
-    photo_id: 4,
-    frame_combo_id: 3,
-    price: FrameCombo.find(3).price
-  }
-]
-Product.create!(product_attributes)
+#   {
+#     photo_id: 4,
+#     frame_combo_id: 3,
+#     price: FrameCombo.find(3).price
+#   }
+# ]
+# Product.create!(product_attributes)
 
 # -------------------------------------------------- CARTS
 
-cart_attributes = [
-  {
-    user_id: 1,
-    total_price: 240,
-    state: "pending"
-  },
+# cart_attributes = [
+#   {
+#     user_id: 1,
+#     total_price: 240,
+#     state: "pending"
+#   },
 
-  {
-    user_id: 1,
-    total_price: 240,
-    state: "paid"
-  },
+#   {
+#     user_id: 1,
+#     total_price: 240,
+#     state: "paid"
+#   },
 
-  {
-    user_id: 2,
-    total_price: 240,
-    state: "pending"
-  },
+#   {
+#     user_id: 2,
+#     total_price: 240,
+#     state: "pending"
+#   },
 
-  {
-    user_id: 2,
-    total_price: 240,
-    state: "paid"
-  }
-]
-Cart.create!(cart_attributes)
+#   {
+#     user_id: 2,
+#     total_price: 240,
+#     state: "paid"
+#   }
+# ]
+# Cart.create!(cart_attributes)
 
 # -------------------------------------------------- CART PRODUCTS
 
