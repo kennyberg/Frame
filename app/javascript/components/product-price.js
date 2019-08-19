@@ -3,7 +3,7 @@ const showPrice = (price) => {
   // below, we select the element on the html where we would like to display the price
   // then we do innerHTML so we can access the text field of that html element
   // we insert the price passed as argument inside that html text field
-  document.querySelector("#priceBox").innerHTML = "€ " + price
+  document.querySelector("#priceBox").innerHTML = "<b>" + "€ " + price + "</b>"
 }
 
 const filterPrice = (dimension, material) => {
@@ -44,6 +44,13 @@ const displayPrice = () => {
       // below, we use the showPrice function defined on top of this file
       // we pass the price corresponding to the current dimension & material IDs as arguments of that method
       showPrice(final_price)
+
+      if (material.value === "" || dimension.value === "" ) {
+        button.disabled = true;
+      }
+      else {
+        button.disabled = false;
+      }
     })
   })
 }

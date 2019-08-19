@@ -136,6 +136,15 @@ ActiveRecord::Schema.define(version: 2019_08_16_062123) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "wishlists", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "photo_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["photo_id"], name: "index_wishlists_on_photo_id"
+    t.index ["user_id"], name: "index_wishlists_on_user_id"
+  end
+
   add_foreign_key "cart_products", "carts"
   add_foreign_key "cart_products", "products"
   add_foreign_key "carts", "users"
@@ -149,4 +158,6 @@ ActiveRecord::Schema.define(version: 2019_08_16_062123) do
   add_foreign_key "photos", "users"
   add_foreign_key "products", "frame_combos"
   add_foreign_key "products", "photos"
+  add_foreign_key "wishlists", "photos"
+  add_foreign_key "wishlists", "users"
 end
