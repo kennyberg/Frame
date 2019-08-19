@@ -29,6 +29,7 @@
         <i class="fas fa-heart" data-id = "<%= photo['id'] %>" data-src="<%= photo["src"]["large2x"]%>"></i>
       </div>
     <% end %>
+
     </div>
 <% end %>
 </div>
@@ -55,10 +56,8 @@
   Medium:<%#= photo["src"]["medium"] %>
 </p> -->
 
-<script>
-
-  // This is a form for a new photo
-  const photos = document.querySelectorAll(".photoindex")
+<script> // FILTER PORTRAIT & LANDSCAPE
+  const photos = document.querySelectorAll("#photoindex")
   const portrait = document.querySelector("#portrait")
   const landscape = document.querySelector("#landscape")
 
@@ -81,8 +80,7 @@
   })
 </script>
 
-<script>
-  const photos = document.querySelectorAll("#photoindex")
+<script> // WHEN USER CLICKS ON A PHOTO, CREATE A NEW PHOTO
   const form_id = document.querySelector("#photo_api_id")
   const form_url = document.querySelector("#photo_api_url")
   const form_height = document.querySelector("#photo_height")
@@ -99,6 +97,7 @@
       document.querySelector("#new_photo").submit()
     })
   })
+
   //This is a form for a new favorite
     let idsAdd = JSON.parse(localStorage.getItem("addIds"));
   if (idsAdd){
