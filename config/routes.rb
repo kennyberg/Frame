@@ -4,8 +4,8 @@ Rails.application.routes.draw do
   get '/dashboard', to: 'pages#dashboard', as: 'user_dashboard'
   resources :photos, except: [:edit, :update] do
     resources :products, only: [:create]
-    resources :favorites, only: [:create, :destroy]
   end
+  resources :favorites, only: [:create, :destroy]
   resources :products, only: [:edit, :update, :destroy]
   resources :cart_products, only: [:destroy]
   resources :carts, only: [:show] do

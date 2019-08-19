@@ -11,3 +11,15 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+.photo-container{
+  position: relative;
+}
+
+.fa-heart{
+  color: #ffe8e8;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  cursor: pointer
+}
