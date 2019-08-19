@@ -2,12 +2,12 @@ class PhotosController < ApplicationController
   def index
     if params[:query] && params[:query] != ""
       @query = params[:query]
-      url = "https://api.pexels.com/v1/search?query=#{@query}+query&per_page=10&page=1"
+      url = "https://api.pexels.com/v1/search?query=#{@query}+query&per_page=30&page=1"
       @json_results = RestClient.get(url, headers = { Authorization: ENV['PEXELS_API_KEY'] })
       @results = JSON.parse(@json_results)
       @photos = @results["photos"]
     else
-      url = "https://api.pexels.com/v1/curated?per_page=10&page=1"
+      url = "https://api.pexels.com/v1/curated?per_page=30&page=1"
       @json_results = RestClient.get(url, headers = { Authorization: ENV['PEXELS_API_KEY'] })
       @results = JSON.parse(@json_results)
       @photos = @results["photos"]
@@ -52,6 +52,8 @@ class PhotosController < ApplicationController
         @photo = Photo.new
         @photo.api_id = params["photo"]["api_id"]
         @photo.api_url = params["photo"]["api_url"]
+        @photo.height = params["photo"]["height"]
+        @photo.width = params["photo"]["width"]
         @photo.save
         redirect_to photo_path(@photo.id)
       end
@@ -88,8 +90,6 @@ class PhotosController < ApplicationController
     params.require(:photo).permit(:title, :upload, :user_id, :cl_url)
   end
 end
-
-
 
 
 
