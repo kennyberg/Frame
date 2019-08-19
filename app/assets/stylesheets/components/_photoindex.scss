@@ -1,13 +1,36 @@
+
 // STYLE FOR PHOTOS
 
-#photoindex {
-  object-fit: contain;
+.grid-photos {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 8px;
 }
+
+@media(max-width: 992px) {
+  .grid-photos {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media(max-width: 768px) {
+  .grid-photos {
+    grid-template-columns: 1fr;
+  }
+}
+
 
 //This allow us to add a heart for the Favorite purpose
 // Position relative allow the heart to be on the pic (pic is relative)
 .photo-container {
   position: relative;
+  /* background-size: cover; */
+  /* background-position: center; */
+  overflow: hidden;
+  img {
+    width: 100%;
+    object-fit: cover;
+  }
 }
 
 //This is the heart icon for favorite purpose
@@ -20,26 +43,10 @@
   cursor: pointer
 }
 
-
-.card {
-  width: 200px;
-}
-
-
-
-.cards {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 16px;
-  // flex-grow: 1;
-  // padding: 16px;
-}
-
 // toggle to sort out the photos
 .display {
   display: none;
 }
-
 
 // STYLE FOR UPLOAD YOUR OWN PHOTO
 

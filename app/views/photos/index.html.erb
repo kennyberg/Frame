@@ -15,9 +15,9 @@
 
 <br>
 
-<div class="d-flex w-100 flex-wrap">
+<div class="grid-photos">
   <% @photos.each do |photo| %>
-    <div class="photo-container" >
+    <div class="photo-container">
       <img id="photoindex" data-id = "<%= photo['id'] %>" src="<%= photo["src"]["large2x"]%>" data-height = "<%= photo['height'] %>" data-width = "<%= photo['width'] %>" height="300" alt="test">
       <i class="fas fa-heart" data-id = "<%= photo['id'] %>" data-src="<%= photo["src"]["large2x"]%>"></i>
     </div>
