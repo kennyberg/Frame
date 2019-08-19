@@ -1,0 +1,21 @@
+#search-form {
+ input{
+  background-color: white;
+  font-family: FontAwesome;
+  border: none;
+  border-bottom: 1px solid $light-gray;
+  &:focus{
+    box-shadow: none;
+  }
+ }
+}
+
+#nav-style {
+  margin-top: 15px;
+  background-color: white;
+  font-family: Quicksand;
+  font-style: regular;
+  font-size: 16px;
+  box-shadow: 0 5px 6px -5px #E4E6ED;
+}
+
