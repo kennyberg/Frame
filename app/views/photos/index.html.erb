@@ -5,7 +5,16 @@
   <% @photos.each do |photo| %>
     <div class="photo-container" >
       <img class="photoindex" data-id = "<%= photo['id'] %>" src="<%= photo["src"]["large2x"]%>" height="300" alt="test">
-      <i class="fas fa-heart" data-id = "<%= photo['id'] %>" data-src="<%= photo["src"]["large2x"]%>"></i>
+      <% if user_signed_in? && current_user.has_favorite_photo?(photo["id"]) %>
+      <div class="icon-container">
+        <a id="destroy-<%=current_user.favorite_id(photo["id"])%>" href="/favorites/<%=current_user.favorite_id(photo["id"])%>"  data-apiId="<%= photo["id"]%>" data-method="delete" data-remote="true" style="visibility:hidden"></a>
+        <i class="fas fa-heart icon-clicked" data-id = "<%= photo['id'] %>" data-src="<%= photo["src"]["large2x"]%>"></i>
+      </div>
+      <% elsif  user_signed_in?  %>
+      <div class="icon-container">
+        <i class="fas fa-heart" data-id = "<%= photo['id'] %>" data-src="<%= photo["src"]["large2x"]%>"></i>
+      </div>
+    <% end %>
     </div>
 <% end %>
 </div>
@@ -46,18 +55,55 @@
     })
   })
   //This is a form for a new favorite
+    let idsAdd = JSON.parse(localStorage.getItem("addIds"));
+  if (idsAdd){
+    idsAdd.forEach((id) => {
+    document.querySelector(`.fa-heart[data-id='${id}']`).classList.add("icon-clicked")
+  })
+
+  }
+  let idsRemove = JSON.parse(localStorage.getItem("removeIds"));
+  if (idsRemove){
+      idsRemove.forEach((id) => {
+    document.querySelector(`.fa-heart[data-id='${id}']`).classList.remove("icon-clicked")
+  })
+
+  }
+
+
   const favoritesForm = document.querySelector("#new_favorite")
   const hearts = document.querySelectorAll(".fa-heart")
   const apiUrl = document.querySelector("#favorite_api_url")
   const apiId = document.querySelector("#favorite_api_id")
+  let addIds = JSON.parse(localStorage.getItem("addIds")) || [];
+  let removeIds = JSON.parse(localStorage.getItem("removeIds")) || [];
 
   hearts.forEach((heart)=>{
     heart.addEventListener('click', (e) => {
       apiId.value = e.target.dataset.id
       apiUrl.value = e.target.dataset.src
-      Rails.fire(favoritesForm, "submit")
+      if (e.target.classList.contains("icon-clicked")) {
+        addIds = addIds.filter(function(item) { return item !== e.target.dataset.id })
+        removeIds.push(e.target.dataset.id)
+        localStorage.setItem("removeIds", JSON.stringify(removeIds));
+        localStorage.setItem("addIds", JSON.stringify(addIds));
+        document.querySelector(`a[data-apiid='${e.target.dataset.id}']`).click()
+        e.target.classList.remove("icon-clicked")
+      } else {
+        removeIds = removeIds.filter(function(item) { return item !== e.target.dataset.id })
+        addIds.push(e.target.dataset.id)
+        localStorage.setItem("removeIds", JSON.stringify(removeIds));
+        localStorage.setItem("addIds", JSON.stringify(addIds));
+        Rails.fire(favoritesForm, "submit")
+
+      }
     })
   })
+
+
+</script>
+
+<script>
 </script>
 
 <!-- document.querySelector("#new_photo").submit() -->

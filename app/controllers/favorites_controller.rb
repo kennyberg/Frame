@@ -9,7 +9,12 @@ class FavoritesController < ApplicationController
         @photo.save
       end
    @favorite = Favorite.new(photo_id: @photo.id, user_id: current_user.id)
-   @favorite.save if Favorite.where(photo_id: @photo.id, user_id: current_user.id).empty?
+   @favorites = Favorite.where(photo_id: @photo.id, user_id: current_user.id)
+   if @favorites.empty?
+      @favorite.save
+   else
+    @favorite = @favorites.first
+  end
    respond_to do |format|
      format.js
    end
@@ -18,6 +23,12 @@ class FavoritesController < ApplicationController
   def destroy
     @favorite = Favorite.find(params[:id])
     @favorite.destroy
-    redirect_to user_dashboard_path
+    if request.referrer.include?("dashboard")
+      redirect_to user_dashboard_path
+    else
+     respond_to do |format|
+       format.js
+     end
+  end
   end
 end

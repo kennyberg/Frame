@@ -11,9 +11,23 @@
 //This is the heart icon for favorite purpose
 // Position absolute allow the heart to be on the pic (heart is absolute)
 .fa-heart{
-  color: #ffe8e8;
-  position: absolute;
-  bottom: 10px;
-  right: 10px;
-  cursor: pointer
+  color: white;
+  opacity: 0.5;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+//This is the class used in the create.js.erb file.
+// This makes the heart change opacity.
+.icon-clicked {
+  color: $yellow;
+  opacity: 1
+}
+
+
+.icon-container{
+    position: absolute;
+  top: 16px;
+  right: 16px;
+
 }
