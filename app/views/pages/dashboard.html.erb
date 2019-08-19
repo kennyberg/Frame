@@ -26,6 +26,18 @@
 <!-- END OF THE CURRENT CART SECTION -->
 
 
+<!-- BEGINNING OF THE FAVORITE PHOTOS SECTION -->
+<h1>Your favorite photos</h1>
+  <% @favorites.each do |favorite| %>
+  <%= image_tag favorite.photo.api_url, height: 150, width: 200, crop: :fill, id: 'favorite-image' %>
+  <p>
+    <%= link_to "Frame", photo_path(@photo.id) %> |
+    <%= link_to "Remove", favorite_path(favorite.id), data: { confirm: "Are you sure?" }, method: :delete %>
+  </p>
+  <% end %>
+<!-- END OF THE FAVORITE SECTION -->
+
+
 <!-- BEGINNING OF THE UPLOADED PHOTOS SECTION -->
 <!-- Below, display the user's photos, i.e. the ones that he has downloaded -->
 <h1>Your uploaded photos</h1>

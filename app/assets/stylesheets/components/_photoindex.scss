@@ -4,6 +4,23 @@
   object-fit: contain;
 }
 
+//This allow us to add a heart for the Favorite purpose
+// Position relative allow the heart to be on the pic (pic is relative)
+.photo-container {
+  position: relative;
+}
+
+//This is the heart icon for favorite purpose
+// Position absolute allow the heart to be on the pic (heart is absolute)
+.fa-heart{
+  color: #ffe8e8;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  cursor: pointer
+}
+
+
 .card {
   width: 200px;
 }
@@ -17,7 +34,6 @@
   // flex-grow: 1;
   // padding: 16px;
 }
-
 
 // toggle to sort out the photos
 .display {
