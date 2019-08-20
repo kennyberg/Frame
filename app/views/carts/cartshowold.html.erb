@@ -1,0 +1,48 @@
+<div>
+<h1>Your current cart</h1>
+
+<ul>
+<% @products.each do |product| %>
+
+
+
+  <li><%= product.photo.title %></li>
+  <li>Frame material: <%= product.frame_combo.frame_material.name %></li>
+  <li>Frame format: <%= product.frame_combo.frame_dimension.format %></li>
+  <li>Price: <%= product.price %></li>
+
+
+  <% product.photo.id %>
+  <% if product.photo.api_id %>
+      <img src="<%= Photo.find(product.photo.id).api_url %>" height="150" width="200" alt="test">
+      <p>
+      <%= link_to 'Update', edit_product_path(product.photo.id) %>
+      <%= link_to 'Remove', product_path(product.cart_product.id), data: { confirm: "Are you sure?" }, method: :delete %>
+      </p>
+
+  <!-- photo uploaded by the user and in the current cart -->
+    <% else %>
+      <%= cl_image_tag product.photo.cl_url, height: 150, width: 200, crop: :fill, id: 'uploaded-image' %>
+      <p>
+      <%= link_to 'Update', edit_product_path(product.photo.id) %>
+      <%= link_to 'Remove', product_path(product.photo.id), data: { confirm: "Are you sure?" }, method: :delete %>
+      </p>
+    <% end %>
+
+<% end %>
+
+</ul>
+</div>
+
+<div>
+  <h2>Your total cart</h2>
+  quantity: <%= @quantity  %>
+  total price: EUR <%= @total_price %>
+</div>
+
+
+<!-- <button class="btn-blue" onclick="window.location.href = '/orde/';">Go to payment</button> -->
+
+<%= link_to 'go to payments', new_cart_order_path(@cart.id) %>
+
+
