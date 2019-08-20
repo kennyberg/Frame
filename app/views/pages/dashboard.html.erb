@@ -1,35 +1,87 @@
-<!-- BEGINNING OF THE FAVORITE PHOTOS SECTION -->
-<h1>Your favorite photos</h1>
-  <% @favorites.each do |favorite| %>
-  <%= image_tag favorite.photo.api_url, height: 150, width: 200, crop: :fill, id: 'favorite-image' %>
-  <p>
-    <%= link_to "Frame", photo_path(favorite.photo.id) %> |
-    <%= link_to "Remove", favorite_path(favorite.id), data: { confirm: "Are you sure?" }, method: :delete %>
-  </p>
-  <% end %>
-<!-- END OF THE FAVORITE SECTION -->
+<!-- <style> body { background-color: rgba(223, 194, 68, 0.27); } </style> -->
+
+<div class="container">
+
+<h2 id="username" >Hello <%= @user.first_name.capitalize %>, welcome in your dashboard</h2>
+
+    <!-- BEGINNING OF THE NAV TAB FAVORITE / UPLOADED SECTION -->
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Favorite</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Uploaded</a>
+      </li>
+    </ul>
+    <!-- END OF THE NAV TAB FAVORITE / UPLOADED SECTION -->
+
+  <div class="tab-content" id="myTabContent">
+
+    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+    <!-- BEGINNING OF THE FAVORITE PHOTOS SECTION -->
+        <% @favorites.each do |favorite| %>
+          <div class="dashboard-image-card">
+            <div class="frame-effet">
+              <%= image_tag favorite.photo.api_url, height: 150, width: 200, crop: :fill, id: 'favorite-image' %>
+            </div>
+            <p id="options">
+            <%= link_to "Frame", photo_path(favorite.photo.id) %> |
+            <%= link_to "Remove", favorite_path(favorite.id), data: { confirm: "Are you sure?" }, method: :delete %>
+            </p>
+          </div>
+        <% end %>
+    <!-- END OF THE FAVORITE SECTION -->
+    </div>
 
 
-<!-- BEGINNING OF THE UPLOADED PHOTOS SECTION -->
-<!-- Below, display the user's photos, i.e. the ones that he has downloaded -->
-<h1>Your uploaded photos</h1>
-<% if @uploaded_photos %>
-  <% @uploaded_photos.each do |photo| %>
-    <%= cl_image_tag photo.cl_url, height: 150, width: 200, crop: :fill, id: 'uploaded-image' %>
-    <p>
-    <%= link_to "Frame", photo_path(photo.id) %> |
-    <%= link_to "Remove", photo_path(photo.id), data: { confirm: "You will no longer be able to print that photo. Are you sure?" }, method: :delete %>
-    </p>
-  <% end %>
-<% else %>
-<% end %>
-<!-- END OF THE UPLOADED PHOTOS SECTION -->
+    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+      <!-- BEGINNING OF THE UPLOADED PHOTOS SECTION -->
+      <!-- Below, display the user's photos, i.e. the ones that he has downloaded -->
+      <% if @uploaded_photos %>
+        <% @uploaded_photos.each do |photo| %>
+          <div class="dashboard-image-card">
+            <div class="frame-effet">
+              <%= cl_image_tag photo.cl_url, height: 150, width: 200, crop: :fill, id: 'uploaded-image' %>
+            </div>
+            <p id="options" >
+            <%= link_to "Frame", photo_path(photo.id) %> |
+            <%= link_to "Remove", photo_path(photo.id), data: { confirm: "You will no longer be able to print that photo. Are you sure?" }, method: :delete %>
+            </p>
+          </div>
+        <% end %>
+      <% else %>
+      <% end %>
+      <!-- END OF THE UPLOADED PHOTOS SECTION -->
+    </div>
+
+  </div>
 
 
-<!-- BEGINNING OF THE PREVIOUS ORDERS SECTION -->
-<!-- Below, display the user's previous orders (just display the price for now) -->
-<h1>Your previous orders</h1>
-<% @previous_carts.each do |cart| %>
-  <%= cart.total_price %>
-<% end %>
-<!-- END OF THE PREVIOUS ORDERS SECTION -->
+
+
+
+
+
+  <!-- BEGINNING THE PREVIOUS ORDERS SECTION -->
+<!--
+  <h1>Your orders</h1>
+  <p>Orders</p>
+ -->
+  <%# @orders.each do |order| %>
+  <%#= order.amount %>
+  <%# end %>
+
+  <!-- END OF THE USER INFORMATION SECTION -->
+
+
+
+  <!-- BEGINNING THE PREVIOUS ORDERS SECTION -->
+
+ <!--  <%= @user.email %>
+  <%= @user.first_name %>
+  <%= @user.last_name %> -->
+
+  <!-- END OF THE USER INFORMATION SECTION -->
+
+
+</div>
