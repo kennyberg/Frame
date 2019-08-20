@@ -19,6 +19,8 @@ class PaymentsController < ApplicationController
     )
 
     @order.update(payment: charge.to_json, state: 'paid')
+    @cart = Cart.find(@order.cart_id)
+    @cart.update(state: 'paid')
 
     redirect_to order_path(@order.id)
 
