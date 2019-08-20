@@ -1,4 +1,6 @@
 class PhotosController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:index, :show, :create]
+
   def index
     if params[:query] && params[:query] != ""
       @query = params[:query]
