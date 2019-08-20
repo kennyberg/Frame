@@ -9,8 +9,6 @@
         </p>
     </div>
 
-
-
     <div id="left-right">
       <%= simple_form_for([@photo, @product]) do |f| %>
       <!-- below, we display all the frame_dimensions existing in a dropdown menu by using the select element. The value that we assign (i.e. material.id) is the value that we'll be able the retrieve when the user chooses a particular option. We add an id to the select element so that we can document.querySelector("#id_name") with js.
@@ -40,38 +38,34 @@
     </div>
   </div>
 
-
-
 <div id="bottom-buttons">
-
 <!-- below, we create a back button using javascript to redirect the user to the previous page and keeping his flow history instead of just redirecting him to a specific page -->
+  <button class="btn-gray" onclick="goBack()">Go Back</button>
 
-  <script>
+  <div style="display: none" id="prices", data-prices="<%= @prices.to_json %>"></div>
+    <%= f.button :submit, "Add to cart", class: "btn-blue", id:"add" %>
+      <!-- [...] -->
+    <% end %>
+  </div>
+</div>
+
+<script>
   function goBack() {
     window.history.back();
   }
-  </script>
+</script>
 
-  <button class="btn-gray" onclick="goBack()">Go Back</button>
+<script>
+  const button = document.querySelector("#add");
+  const material = document.querySelector("#material");
+  const dimension = document.querySelector("#dimension");
 
+  button.disabled = true;
 
-  <script>
-    const material = document.querySelector("#material")
-    const dimension = document.querySelector("#dimension")
-    const button = document.querySelector("#new_product input[type=submit]")
-
-    if (material.value === "" || dimension.value === "" ) {
-      button.disabled = true;
-    }
-    else {
-      button.disabled = false;
-    }
-  </script>
-
-  <div style="display: none" id="prices", data-prices="<%= @prices.to_json %>"></div>
-    <%= f.button :submit, "Add to cart", class: "btn-blue" %>
-      <!-- [...] -->
-    <% end %>
-</div>
-
-</div>
+  if (material.value === "" || dimension.value === "" ) {
+    button.disabled = true;
+  }
+  else {
+    button.disabled = false;
+  }
+</script>
