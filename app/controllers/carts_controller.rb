@@ -23,8 +23,6 @@ class CartsController < ApplicationController
 
     @quantity = @products.length
     @total_price = prices.inject(0){|sum,x| sum + x }
-    raise
-
   end
 
 

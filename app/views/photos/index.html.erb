@@ -15,10 +15,11 @@
 
 <br>
 
-<div class="d-flex w-100 flex-wrap">
+<div class="grid-photos">
   <% @photos.each do |photo| %>
+
     <div class="photo-container" >
-      <img class="photoindex" data-id = "<%= photo['id'] %>" src="<%= photo["src"]["large2x"]%>" height="300" alt="test">
+      <img class="photoindex" data-id = "<%= photo['id'] %>" src="<%= photo["src"]["large2x"]%>" data-height = "<%= photo['height'] %>" data-width = "<%= photo['width'] %>" height="300" alt="test">
       <% if user_signed_in? && current_user.has_favorite_photo?(photo["id"]) %>
       <div class="icon-container">
         <a id="destroy-<%=current_user.favorite_id(photo["id"])%>" href="/favorites/<%=current_user.favorite_id(photo["id"])%>"  data-apiId="<%= photo["id"]%>" data-method="delete" data-remote="true" style="visibility:hidden"></a>
@@ -31,7 +32,7 @@
     <% end %>
 
     </div>
-<% end %>
+  <% end %>
 </div>
 
   <%= simple_form_for Photo.new do |f| %>
@@ -58,6 +59,7 @@
 
 <script> // FILTER PORTRAIT & LANDSCAPE
   const photos = document.querySelectorAll("#photoindex")
+  // const photoContainers = document.querySelectorAll(".photo-container")
   const portrait = document.querySelector("#portrait")
   const landscape = document.querySelector("#landscape")
 
@@ -65,7 +67,7 @@
     portrait.classList.toggle("btn-activated");
     photos.forEach((photo) => {
       if (photo.dataset.height < photo.dataset.width * 1.5) {
-        photo.classList.toggle("display");
+        photo.parentElement.classList.toggle("display");
       }
     })
   })
@@ -74,7 +76,7 @@
     landscape.classList.toggle("btn-activated");
     photos.forEach((photo) => {
       if (photo.dataset.height * 1.5 > photo.dataset.width) {
-        photo.classList.toggle("display");
+        photo.parentElement.classList.toggle("display");
       }
     })
   })

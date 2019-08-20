@@ -1,14 +1,57 @@
+
 // STYLE FOR PHOTOS
 
-#photoindex {
-  object-fit: contain;
+.grid-photos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 //This allow us to add a heart for the Favorite purpose
 // Position relative allow the heart to be on the pic (pic is relative)
 .photo-container {
+  cursor: pointer;
+  box-shadow: 0px 0px 3px $gray;
+  margin: 8px;
   position: relative;
+  max-width: 30%;
+  flex-grow: 1;
+  overflow: hidden;
+  img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+  }
 }
+
+@media(max-width: 992px) {
+  .photo-container {
+   max-width: 40vw;
+  }
+}
+
+@media(max-width: 468px) {
+  .photo-container {
+    max-width: 100vw;
+  }
+}
+
+// HOVER PHOTO STYLE
+
+#photoindex:hover {
+  opacity: 0.8;
+  filter: alpha(opacity=80); /* For IE8 and earlier */
+}
+
+.photo-container #photoindex {
+ transition: 0.8s;
+ }
+
+.photo-container:hover #photoindex {
+ -webkit-transform: scale(1.2);
+ transform: scale(1.05);
+ transition: 0.8s;
+ }
 
 //This is the heart icon for favorite purpose
 // Position absolute allow the heart to be on the pic (heart is absolute)
@@ -34,26 +77,10 @@
 
 }
 
-
-.card {
-  width: 200px;
-}
-
-
-
-.cards {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 16px;
-  // flex-grow: 1;
-  // padding: 16px;
-}
-
 // toggle to sort out the photos
 .display {
   display: none;
 }
-
 
 // STYLE FOR UPLOAD YOUR OWN PHOTO
 
@@ -164,5 +191,3 @@
   margin: 0px;
   cursor: pointer;
 }
-
-
