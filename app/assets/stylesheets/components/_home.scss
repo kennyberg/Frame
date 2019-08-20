@@ -1,10 +1,10 @@
 .container-banner {
     background-size: cover;
-    background-position: initial;
+    background-position: center;
     height: 90vh;
     display: flex;
     justify-content: left;
-    align-items: flex-end;
+    align-items: center;
   }
 
   .this-is-flex {
@@ -19,18 +19,19 @@
   font-size: 22px;
   font-family: 'Quicksand', sans-serif;
   color: $black;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
   font-style: medium;
   font-weight: 500;
   }
 
   .white-flex {
-    background-color: rgba(255, 255, 255, 0.77);
-    padding: 35px;
-    min-width: 50vw;
+    margin-top: 40px;
+    background-color: rgba(255, 255, 255, 0.65);
+    padding: 30px 0px 30px 50px;
+    min-width: 44vw;
     border-radius: 2px;
-    margin-bottom: 50px;
-    text-align: center;
+    // margin-bottom: 50px;
+    // text-align: center;
   }
 
    .small-paragraph {
