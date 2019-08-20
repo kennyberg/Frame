@@ -1,10 +1,11 @@
+// STYLE FOR THE WELCOMING TEXT ON THE TOP OF THE PAGE
 
 #username {
   margin-top: 30px;
   margin-bottom: 30px;
 }
 
-// STYLE FOR FAVORITE IMAGES
+// STYLE FOR PHOTOS IN THE DASHBOARD
 
 #options {
   margin-top: 3px;
@@ -33,26 +34,46 @@
   }
 }
 
-#favorite-image {
-  width: 100%;
-  object-fit: cover;
-  transition: 0.8s;
+.frame-effet {
+  box-shadow: 0px 0px 3px $gray;
 }
 
 .dashboard-image-card {
   height: 10em;
-  width: 25%;
+  max-width: 25%;
   padding: 0.5em;
   box-sizing: border-box;
   margin-bottom: 1.2em;
 }
 
-.frame-effet {
-  box-shadow: 0px 0px 3px $gray;
+@media(max-width: 1152px) {
+  .dashboard-image-card {
+   max-width: 33%;
+  }
+}
+
+@media(max-width: 992px) {
+  .dashboard-image-card {
+   max-width: 50%;
+  }
+}
+
+@media(max-width: 692px) {
+  .dashboard-image-card {
+   max-width: 100vw;
+  }
 }
 
 .dashboard-image-card:hover > #options {
   font-weight: bold;
+}
+
+// STYLE SPECIFIC TO FAVORITE IMAGES
+
+#favorite-image {
+  width: 100%;
+  object-fit: cover;
+  transition: 0.8s;
 }
 
 .dashboard-image-card:hover #favorite-image {
@@ -61,19 +82,11 @@
   filter: alpha(opacity=80);
 }
 
-// STYLE FOR UPLOADED IMAGES
+// STYLE SPECIFIC TO UPLOADED IMAGES
 
 #uploaded-image {
   width: 100%;
   object-fit: cover;
-}
-
-.uploaded-image-card {
-  height: 10em;
-  width: 25%;
-  padding: 0.5em;
-  box-sizing: border-box;
-  margin-bottom: 1.2em;
 }
 
 .dashboard-image-card:hover #uploaded-image {
