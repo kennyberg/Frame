@@ -1,56 +1,77 @@
-<%= simple_form_for([@photo, @product]) do |f| %>
-<!-- below, we display all the frame_dimensions existing in a dropdown menu by using the select element. The value that we assign (i.e. material.id) is the value that we'll be able the retrieve when the user chooses a particular option. We add an id to the select element so that we can document.querySelector("#id_name") with js.
- -->
-  <select name="frame[dimension]" id="dimension">
-    <option value="">Select a size</option>
-    <% @frame_dimensions.each do |dimension| %>
-      <option value="<%= dimension.id %>"><%= dimension.format %></option>
-    <% end %>
-  </select>
+<div class="large-bloc">
+  <div class="colum-left">
+    <div id="left-left">
+          <h2>Choose your options</h2>
+
+          <p>
+          Customize your frame by chosing the type of frame you like, and the size of the composition. </br>
+          Tips & tricks : if you want to place one frame only, then choose a large format, then you will give more perspective to your room. If you prefer small frames, then you would think about placing several frames together. This will giev a uniq design to your home.
+        </p>
+    </div>
 
 
-<!-- below, we display all the frame_material existing in a dropdown menu by using the select element. The value that we assign (i.e. material.id) is the value that we'll be able the retrieve when the user chooses a particular option. We add an id to the select element so that we can document.querySelector("#id_name") with js.
- -->
-  <select name="frame[material]" id="material">
-    <option value="">Select a frame</option>
-    <% @frame_materials.each do |material| %>
-      <option value="<%= material.id %>"><%= material.name %></option>
-    <% end %>
-  </select>
+
+    <div id="left-right">
+      <%= simple_form_for([@photo, @product]) do |f| %>
+      <!-- below, we display all the frame_dimensions existing in a dropdown menu by using the select element. The value that we assign (i.e. material.id) is the value that we'll be able the retrieve when the user chooses a particular option. We add an id to the select element so that we can document.querySelector("#id_name") with js.
+       -->
+        <select name="frame[dimension]" id="dimension">
+          <option value="">Select a size</option>
+          <% @frame_dimensions.each do |dimension| %>
+            <option value="<%= dimension.id %>"><%= dimension.format %></option>
+          <% end %>
+        </select>
 
 
-<!-- below, we transform the @prices created in the photos controller into a json object. We then store it into a data-* attribute which is used to store custom data private to the page or application. The data-* attribute gives us the ability to embed custom data attributes in a HTML element.
+      <!-- below, we display all the frame_material existing in a dropdown menu by using the select element. The value that we assign (i.e. material.id) is the value that we'll be able the retrieve when the user chooses a particular option. We add an id to the select element so that we can document.querySelector("#id_name") with js.
+       -->
+        <select name="frame[material]" id="material">
+          <option value="">Select a frame</option>
+          <% @frame_materials.each do |material| %>
+            <option value="<%= material.id %>"><%= material.name %></option>
+          <% end %>
+        </select>
 
--->
-  <div style="display: none" id="prices", data-prices="<%= @prices.to_json %>"></div>
 
-  <%= f.button :submit, "Add to cart", class: "btn btn-primary" %>
-  <!-- [...] -->
-<% end %>
+      <!-- below, we transform the @prices created in the photos controller into a json object. We then store it into a data-* attribute which is used to store custom data private to the page or application. The data-* attribute gives us the ability to embed custom data attributes in a HTML element.
 
+      -->
+        <h1 id="priceBox">from <b>€ 39</b></h1>
+    </div>
+  </div>
+
+
+
+<div id="bottom-buttons">
 
 <!-- below, we create a back button using javascript to redirect the user to the previous page and keeping his flow history instead of just redirecting him to a specific page -->
 
-<script>
-function goBack() {
-  window.history.back();
-}
-</script>
+  <script>
+  function goBack() {
+    window.history.back();
+  }
+  </script>
 
-<button onclick="goBack()">Go Back</button>
+  <button class="btn-gray" onclick="goBack()">Go Back</button>
 
 
-<script>
+  <script>
+    const material = document.querySelector("#material")
+    const dimension = document.querySelector("#dimension")
+    const button = document.querySelector("#new_product input[type=submit]")
 
-const material = document.querySelector("#material")
-const dimension = document.querySelector("#dimension")
-const button = document.querySelector("#new_product input[type=submit]")
+    if (material.value === "" || dimension.value === "" ) {
+      button.disabled = true;
+    }
+    else {
+      button.disabled = false;
+    }
+  </script>
 
-if (material.value === "" || dimension.value === "" ) {
-  button.disabled = true;
-}
-else {
-  button.disabled = false;
-}
+  <div style="display: none" id="prices", data-prices="<%= @prices.to_json %>"></div>
+    <%= f.button :submit, "Add to cart", class: "btn-blue" %>
+      <!-- [...] -->
+    <% end %>
+</div>
 
-</script>
+</div>

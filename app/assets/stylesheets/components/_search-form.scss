@@ -1,9 +1,10 @@
 #search-form {
  input{
   background-color: white;
-  font-family: FontAwesome;
   border: none;
   border-bottom: 1px solid $light-gray;
+  font-size: 14px;
+  font-family: lato;
   &:focus{
     box-shadow: none;
   }
@@ -11,11 +12,19 @@
 }
 
 #nav-style {
-  margin-top: 15px;
   background-color: white;
   font-family: Quicksand;
   font-style: regular;
   font-size: 16px;
-  box-shadow: 0 5px 6px -5px #E4E6ED;
+  box-shadow: 0 5px 4px -4px #f2f4f7;
+  padding-bottom: 3px;
+}
+
+
+#fa-fa-fix {
+  border-bottom: 1px solid $light-gray;
+  display: flex;
+  align-items: center;
+  color: $light-gray;
 }
 
