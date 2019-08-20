@@ -12,9 +12,11 @@
       </li>
 
       <% if user_signed_in? %>
-        <li class="nav-item">
-          <%#= link_to "CART", cart_path(current_user.cart), class:"nav-link" %>
-        </li>
+        <% if Cart.where(user_id: current_user.id).where(state: "pending").first %>
+          <li class="nav-item">
+            <%= link_to "CART", cart_path(Cart.where(user_id: current_user.id).where(state: "pending").first), class:"nav-link" %>
+          </li>
+        <% end %>
       <% end %>
 
       <% if user_signed_in? %>

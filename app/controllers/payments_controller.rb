@@ -1,7 +1,8 @@
 class PaymentsController < ApplicationController
- before_action :set_order
+  before_action :set_order
 
   def new
+    @order = Order.find(params[:order_id])
   end
 
   def create
@@ -18,6 +19,7 @@ class PaymentsController < ApplicationController
     )
 
     @order.update(payment: charge.to_json, state: 'paid')
+
     redirect_to order_path(@order.id)
 
     rescue Stripe::CardError => e
