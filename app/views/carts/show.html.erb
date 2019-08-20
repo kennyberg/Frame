@@ -1,14 +1,22 @@
-<h1>Carts#show</h1>
-<p>Find me in app/views/carts/show.html.erb</p>
+<div>
+<h1>Your current cart</h1>
 
 
+<ul>
 <% @products.each do |product| %>
-<%= product.photo.title %>
-<%= product.frame_combo.frame_material.name %>
-<%= product.frame_combo.frame_dimension.format %>
-<%= product.price %>
+  <li><%= product.photo.title %></li>
+  <li>Frame material: <%= product.frame_combo.frame_material.name %></li>
+  <li>Frame format: <%= product.frame_combo.frame_dimension.format %></li>
+  <li>Price: <%= product.price %></li>
+  <li><% product.photo.id %></li>
 <% end %>
 
-<<h2>Your total cart</h2>
-quantity: <%= @quantity  %>
-total price: EUR <%= @total_price %>
+</ul>
+</div>
+
+<div>
+  <h2>Your total cart</h2>
+  quantity: <%= @quantity  %>
+  total price: EUR <%= @total_price %>
+</div>
+

@@ -1,12 +1,17 @@
-.navbar-lewagon {
-  justify-content: space-between;
-  background: white;
+ #nav-style {
+  align-items: flex-end;
+  margin: 0px;
+  padding: 0 10px 0px 30px;
+ }
+
+.logo-nav {
+  font-family: 'Playfair Display', serif;
+  font-size: 38px;
+  margin-right: 30px;
+  padding-bottom: 3px;
 }
 
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
-}
 
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
+.nav-link {
+  font-size: 14px;
 }
