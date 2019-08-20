@@ -1,6 +1,6 @@
 var id = "<%= @photo.api_id %>"
 // we retrieve the id (from the api) of the photo, and store it.
 
-//we select the heart icon, and change the color on clic, without refreshing the page.
-document.querySelector(`.fa-heart[data-id='${id}']`).style.color = "red"
 
+document.querySelector(`.fa-heart[data-id='${id}']`).classList.add("icon-clicked")
+document.querySelector(`.fa-heart[data-id='${id}']`).insertAdjacentHTML("beforebegin", '<a id="destroy-<%=@favorite.id%>" href="/favorites/<%=@favorite.id%>" data-method="delete" data-remote="true" data-apiId="<%=@favorite.photo.api_id%>" style="visibility:hidden"">Destroy</a>')
