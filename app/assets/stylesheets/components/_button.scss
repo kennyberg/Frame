@@ -29,12 +29,16 @@
 .btn-gray {
   font-family: $body-font;
   font-size: 16px;
-  background-color: $light-gray;
+  background-color: $gray;
   color: white;
   width: 238px;
   height: 45px;
   border-radius: 2px;
   padding: 0;
   border: none;
-
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
 }
+

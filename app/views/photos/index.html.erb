@@ -96,20 +96,18 @@
   })
 
   //This is a form for a new favorite
-    let idsAdd = JSON.parse(localStorage.getItem("addIds"));
-  if (idsAdd){
-    idsAdd.forEach((id) => {
-    document.querySelector(`.fa-heart[data-id='${id}']`).classList.add("icon-clicked")
-  })
+  // if (idsAdd){
+  //   idsAdd.forEach((id) => {
+  //   document.querySelector(`.fa-heart[data-id='${id}']`).classList.add("icon-clicked")
+  // })
 
-  }
-  let idsRemove = JSON.parse(localStorage.getItem("removeIds"));
-  if (idsRemove){
-      idsRemove.forEach((id) => {
-    document.querySelector(`.fa-heart[data-id='${id}']`).classList.remove("icon-clicked")
-  })
+  // }
+  // if (idsRemove){
+  //     idsRemove.forEach((id) => {
+  //   document.querySelector(`.fa-heart[data-id='${id}']`).classList.remove("icon-clicked")
+  // })
 
-  }
+  // }
 
 
   const favoritesForm = document.querySelector("#new_favorite")
