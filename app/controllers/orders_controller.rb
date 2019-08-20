@@ -21,6 +21,7 @@ class OrdersController < ApplicationController
   def new
     @order = Order.new
     @cart = Cart.find(params[:cart_id])
+    @order.amount = @cart.total_price
     # (maybe params[:id], à voir quand on testera)
   end
 
@@ -29,6 +30,7 @@ class OrdersController < ApplicationController
     @order.user_id = current_user.id
     @order.cart_id = params[:cart_id]
     @cart = Cart.find(params[:cart_id])
+
     @order.amount = @cart.total_price
     @order.state = 'pending'
 

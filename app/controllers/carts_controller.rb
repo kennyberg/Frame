@@ -20,6 +20,11 @@ class CartsController < ApplicationController
 
     @quantity = @products.length
     @total_price = prices.inject(0){|sum,x| sum + x }
+    @cart.total_price = @total_price
+    @cart.save
+
+    @products_in_current_cart = CartProduct.where(cart_id: @cart.id)
+
   end
 
 end

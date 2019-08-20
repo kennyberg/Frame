@@ -15,7 +15,7 @@ class ProductsController < ApplicationController
     # finally, we destroy the product from the user's cart
       @product_in_current_cart_products.destroy
     end
-    redirect_to user_dashboard_path
+    redirect_to cart_path(current_user.carts.last)
     # @products_in_current_cart = CartProduct.where(cart_id: @current_cart.id)
   end
 
@@ -65,7 +65,7 @@ class ProductsController < ApplicationController
       # if there's no cart with a pending state, we create a new cart
       @current_cart = Cart.where(user_id: current_user.id).where(state: "pending").first_or_create
       CartProduct.create!(product_id: @product.id, cart_id: @current_cart.id)
-      redirect_to user_dashboard_path
+      redirect_to cart_path(@current_cart)
     else
       redirect_to photo_path(params[:photo_id])
     end
