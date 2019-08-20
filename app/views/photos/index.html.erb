@@ -21,7 +21,7 @@
       <img id="photoindex" data-id = "<%= photo['id'] %>" src="<%= photo["src"]["large2x"]%>" data-height = "<%= photo['height'] %>" data-width = "<%= photo['width'] %>" height="300" alt="test">
       <i class="fas fa-heart" data-id = "<%= photo['id'] %>" data-src="<%= photo["src"]["large2x"]%>"></i>
     </div>
-<% end %>
+  <% end %>
 </div>
 
   <%= simple_form_for Photo.new do |f| %>
@@ -48,6 +48,7 @@
 
 <script> // FILTER PORTRAIT & LANDSCAPE
   const photos = document.querySelectorAll("#photoindex")
+  // const photoContainers = document.querySelectorAll(".photo-container")
   const portrait = document.querySelector("#portrait")
   const landscape = document.querySelector("#landscape")
 
@@ -55,7 +56,7 @@
     portrait.classList.toggle("btn-activated");
     photos.forEach((photo) => {
       if (photo.dataset.height < photo.dataset.width * 1.5) {
-        photo.classList.toggle("display");
+        photo.parentElement.classList.toggle("display");
       }
     })
   })
@@ -64,7 +65,7 @@
     landscape.classList.toggle("btn-activated");
     photos.forEach((photo) => {
       if (photo.dataset.height * 1.5 > photo.dataset.width) {
-        photo.classList.toggle("display");
+        photo.parentElement.classList.toggle("display");
       }
     })
   })
