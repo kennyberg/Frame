@@ -15,6 +15,5 @@ class PagesController < ApplicationController
     @previous_carts = Cart.where(user_id: current_user.id).where(state: "paid")
     # still need to do the same for user's favorites
     # still need to do the same for user's information
-
   end
 end

@@ -55,7 +55,7 @@ class PhotosController < ApplicationController
         @photo.height = params["photo"]["height"]
         @photo.width = params["photo"]["width"]
         @photo.save
-        redirect_to photo_path(@photo.id)
+        redirect_to user_dashboard_path
       end
     else
       @photo = Photo.new(photo_params)
