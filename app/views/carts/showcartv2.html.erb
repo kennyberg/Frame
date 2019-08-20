@@ -1,0 +1,51 @@
+<body id="body-background">
+
+  <div class="flex-card-container">
+
+    <div class="photo-column">
+      <% @products.each do |product| %>
+        <% product.photo.id %>
+
+        <% if product.photo.api_id %>
+          <img src="<%= Photo.find(product.photo.id).api_url %>" height="150" width="200" alt="test">
+          <p>
+            <%= link_to 'Update', edit_product_path(product.photo.id) %>
+            <%= link_to 'Remove', product_path(product.cart_product.id), data: { confirm: "Are you sure?" }, method: :delete %>
+          </p>
+
+        <!-- photo uploaded by the user and in the current cart -->
+        <% else %>
+          <%= cl_image_tag product.photo.cl_url, height: 150, width: 200, crop: :fill, id: 'uploaded-image' %>
+          <p>
+            <%= link_to 'Update', edit_product_path(product.photo.id) %>
+
+          </p>
+        <% end %>
+
+      <% end %>
+    </div>
+
+    <div class="info-column">
+
+      <div>
+        <% @products.each do |product| %>
+        <h2><%= product.photo.title %></h2>
+      </div>
+
+      <div>
+        Frame material: <%= product.frame_combo.frame_material.name %>
+        Frame format: <%= product.frame_combo.frame_dimension.format %>
+      </div>
+
+      <div>
+        Price: <%= product.price %>
+        <% end %>
+      </div>
+
+    </div>
+
+
+  </div>
+
+
+</body>

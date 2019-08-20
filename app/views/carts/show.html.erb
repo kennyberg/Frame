@@ -1,44 +1,67 @@
-<div>
-<h1>Your current cart</h1>
+<body id="body-background">
 
-<ul>
-<% @products.each do |product| %>
-  <li><%= product.photo.title %></li>
-  <li>Frame material: <%= product.frame_combo.frame_material.name %></li>
-  <li>Frame format: <%= product.frame_combo.frame_dimension.format %></li>
-  <li>Price: <%= product.price %></li>
+  <div class="d-flex">
+
+    <div class="card-products-cart">
+      <% @products.each do |product| %>
+        <div class="flex-card-container">
+          <% product.photo.id %>
+            <% if product.photo.api_id %>
+              <div class="photo-column-1">
+                <img src="<%= Photo.find(product.photo.id).api_url %>" height="150" width="200" alt="test">
+              </div>
+
+              <div class="photo-column-2">
+                <h2><%= product.photo.title %></h2>
+                <div class="cart-info">
+                  <p><%= product.frame_combo.frame_material.name %></p>
+                  <p>Format <%= product.frame_combo.frame_dimension.format %></p>
+                </div>
+                <h2>€ <%= product.price %></h2>
+              </div>
+
+              <div class="photo-column-3">
+                <p>
+                  <%= link_to(edit_product_path(product.photo.id), method: :update) do %>
+                    <i class="fa fa-pen"></i>
+                  <% end %>
+
+                  <%= link_to(product_path(product.cart_product.id), data: { confirm: "Are you sure?" }, method: :delete) do %>
+                   <i class="fa fa-minus-circle"></i>
+                  <% end %>
+                </p>
+              </div>
+          <!-- photo uploaded by the user and in the current cart -->
+            <% else %>
+              <div class="photo-column-1">
+                <%= cl_image_tag product.photo.cl_url, height: 150, width: 200, crop: :fill, id: 'uploaded-image' %>
+              </div>
+
+              <div class="photo-column-2">
+                <h2><%= product.photo.title %></h2>
+                <div class="cart-info">
+                  <p><%= product.frame_combo.frame_material.name %></p>
+                  <p>Format <%= product.frame_combo.frame_dimension.format %></p>
+                </div>
+                <h2>€ <%= product.price %></h2>
+              </div>
+
+              <div class="photo-column-3">
+                <p>
+                  <%= link_to(edit_product_path(product.photo.id), method: :update) do %>
+                    <i class="fa fa-pen"></i>
+                  <% end %>
+                </p>
+              </div>
+            <% end %>
+        </div>
+      <% end %>
+    </div>
 
 
-  <% product.photo.id %>
-  <% if product.photo.api_id %>
-      <img src="<%= Photo.find(product.photo.id).api_url %>" height="150" width="200" alt="test">
-      <p>
-      <%= link_to 'Update', edit_product_path(product.photo.id) %>
-      <%= link_to 'Remove', product_path(product.cart_product.id), data: { confirm: "Are you sure?" }, method: :delete %>
-      </p>
+    <div class="total-cart">
+      <%= link_to 'go to payments', new_cart_order_path(@cart.id) %>
+    </div>
+  </div>
 
-  <!-- photo uploaded by the user and in the current cart -->
-    <% else %>
-      <%= cl_image_tag product.photo.cl_url, height: 150, width: 200, crop: :fill, id: 'uploaded-image' %>
-      <p>
-      <%= link_to 'Update', edit_product_path(product.photo.id) %>
-      <%= link_to 'Remove', product_path(product.photo.id), data: { confirm: "Are you sure?" }, method: :delete %>
-      </p>
-    <% end %>
-
-<% end %>
-
-</ul>
-</div>
-
-<div>
-  <h2>Your total cart</h2>
-  quantity: <%= @quantity  %>
-  total price: EUR <%= @total_price %>
-</div>
-
-
-<!-- <button class="btn-blue" onclick="window.location.href = '/orde/';">Go to payment</button> -->
-
-<%= link_to 'go to payments', new_cart_order_path(@cart.id) %>
-
+</body>
