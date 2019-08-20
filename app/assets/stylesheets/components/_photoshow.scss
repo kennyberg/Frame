@@ -5,13 +5,13 @@
   margin: 0px 0px;
   padding: 50px 5px;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: space-evenly;
   }
 
 .photoshow {
   object-fit: contain;
   max-width: 44vw;
-  max-height: 85vh;
+  max-height: 65vh;
 }
 
 .large-photo {
@@ -25,6 +25,7 @@
   min-width: 38vw;
   flex-wrap: wrap;
   flex-direction: column;
+  justify-content: center;
 }
 
 
