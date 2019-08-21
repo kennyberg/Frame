@@ -1,3 +1,6 @@
+<!--   NAVBAR START================== -->
+
+
 <nav class="navbar navbar-expand-lg navbar-light" id="nav-style">
   <a class="navbar-brand logo-nav" href="/">FRA.Me</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -6,9 +9,27 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
+
       <li class="nav-item">
-        <%= link_to "COLLECTION", photos_path, class:"nav-link" %>
-        <!-- <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a> -->
+          <div class="dropdown" id="corrector">
+              <button class="nav-link dropdown-btn">COLLECTION
+                <i class="fa fa-caret-down"></i>
+              </button>
+              <div class="dropdown-content" class="front-dropdown-content">
+                <a href="/photos?utf8=✓&query=travel">travel</a>
+                <a href="/photos?utf8=✓&query=forest">forest</a>
+                <a href="/photos?utf8=✓&query=summer">summer</a>
+                <a href="/photos?utf8=✓&query=yoga">yoga</a>
+                <a href="/photos?utf8=✓&query=smile">smile</a>
+                <a href="/photos?utf8=✓&query=people">people</a>
+                <a href="/photos?utf8=✓&query=love">love</a>
+                <a href="/photos?utf8=✓&query=street">street</a>
+                <a href="/photos?utf8=✓&query=mountain">mountain</a>
+                <a href="/photos?utf8=✓&query=night">night</a>
+                <a href="/photos?utf8=✓&query=paint">paint</a>
+                <a href="/photos?utf8=✓&query=art">art</a>
+              </div>
+            </div>
       </li>
 
       <% if user_signed_in? %>

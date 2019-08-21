@@ -1,3 +1,5 @@
+// NAVBAR STYLE
+
  #nav-style {
   align-items: flex-end;
   margin: 0px;
@@ -23,7 +25,22 @@
   padding-right: 15px;
 }
 
-
 .navbar-brand {
   padding: 0px;
+}
+
+.dropdown-btn  {
+  border: none;
+  background-color: transparent;
+}
+
+#corrector {
+  margin: 0px;
+  border-bottom: none;
+  display: block;
+}
+
+.front-dropdown-content a {
+  padding: 0px 16px;
+  margin-top: 1px;
 }
