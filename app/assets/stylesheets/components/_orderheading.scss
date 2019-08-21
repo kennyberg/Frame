@@ -1,0 +1,31 @@
+.heading {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.form-order-recap {
+  padding-left: 35px;
+  padding-right: 35px;
+}
+
+
+.list-unstyled {
+    list-style: none;
+    font-family: lato;
+    font-size: 14px;
+    font-weight: 300;
+  }
+
+.table {
+    width: 100%;
+    color: $black;
+    font-size: 14px;
+    font-weight: 300;
+    font-family: lato;
+  }
+
+.fa-paper-plane {
+  color: #289E5E;
+}

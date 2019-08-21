@@ -1,41 +1,54 @@
+<body id="body-blue">
+  <div class="form-container form-order-recap">
 
-<%= @order.state %>
-<%= humanized_money_with_symbol(@order.amount) %>
+    <div class="container-title w-100">
+      <h2 style= "color: #289E5E">Successful payment</h2>
+      <p><%= @order.user.first_name.capitalize %>, your art composition is on its way<i class="fas fa-paper-plane pl-2"></i></p>
+    </div>
 
-<h1>Your detailed order</h1>
+    <div class="form-itself pt-2 w-100">
+      <div class="heading">
+        <ul class="list-unstyled">
+          <li style="font-weight: 400">Delivery address</li>
+          <li><%= @order.user.first_name.capitalize %> <%= @order.user.last_name.capitalize %></li>
+          <li><%= @order.address_line_1 %></li>
+          <li><%= @order.address_zipcode %> <%= @order.address_city.capitalize %></li>
+          <li><%= @order.country %></li>
+        </ul>
 
-<h2>Delivery address:</h2>
+        <ul class="list-unstyled">
+          <li  style="font-weight: 400">Contact information</li>
+          <li><i class="fas fa-mobile-alt pr-2"></i> <%= @order.phone_number %></li>
+        </ul>
 
-<%= @order.user.first_name %> <%= @order.user.last_name %>,
-<%= @order.address_line_1 %>
-<%= @order.address_zipcode %> <%= @order.address_city %>
-<%= @order.country %>
-
-
-Contact: <%= @order.phone_number %>
-
-<table style="width:70%">
-  <tr>
-    <th>article</th>
-    <th>quantity</th>
-    <th>price</th>
-  </tr>
-
-<!-- va venir du cart show, à faire plus tard
-  <tr>
-    <td>article</td>
-    <td>quantity</td>
-    <td>price</td>
-  </tr> -->
-
-</table>
-
-<% @products.each do |product| %>
-<%= product.photo.title %>
-<%= product.frame_combo.frame_material.name %>
-<%= product.frame_combo.frame_dimension.format %>
-<%= product.price %>
-<% end %>
+      </div>
 
 
-<%= link_to 'my dashboard', user_dashboard_path %>
+      <div>
+        <table class="table" style="width:100%">
+          <tr >
+            <th scope="col">article</th>
+            <th scope="col">quantity</th>
+            <th scope="col">price</th>
+          </tr>
+
+          <% @products.each do |product| %>
+            <tr>
+              <td><%= product.photo.title %> <%= product.frame_combo.frame_material.name %> <%= product.frame_combo.frame_dimension.format %></td>
+              <td>1</td>
+              <td><%#= product.price %></td>
+            </tr>
+          <% end %>
+
+          <tr>
+            <td>Total of your order</td>
+            <td><%= @cart.cart_products.length %></td>
+            <td><%=humanized_money_with_symbol(@order.amount)%>, <%= @order.state %></td>
+          </tr>
+        </table>
+      </div>
+
+    </div>
+    <%= link_to 'back to your dashboard', user_dashboard_path, class:"btn-yellow" %>
+  </div>
+</body>
