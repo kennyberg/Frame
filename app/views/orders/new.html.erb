@@ -6,15 +6,15 @@
       <p>Now please tell us about the delivery details</p>
     </div>
 
-    <div class="form-itself pt-2">
+    <div class="form-itself pt-2 w-100">
       <%= simple_form_for [@cart, @order] do |f| %>
         <%= f.input :address_line_1 %>
         <%= f.input :address_zipcode %>
         <%= f.input :address_city %>
         <%#= f.input :country %>
-        <div class="pb-3">
-          <%= f.input :phone_number %>
-        </div>
+      <div class="pb-3">
+        <%= f.input :phone_number %>
+      </div>
         <%= f.button :submit, class: "btn-yellow" %>
       <% end %>
     </div>

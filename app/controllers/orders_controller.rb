@@ -23,7 +23,7 @@ class OrdersController < ApplicationController
     @cart = Cart.find(params[:cart_id])
     @order.amount = @cart.total_price
     @user = current_user
-    # (maybe params[:id], à voir quand on testera)
+
   end
 
   def create
