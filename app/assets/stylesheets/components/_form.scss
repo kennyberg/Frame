@@ -1,5 +1,4 @@
 #body-blue {
-  // background-color: rgba(223, 194, 68, 0.27);
   background-color: $dark-blue;
 }
 
@@ -15,7 +14,7 @@
   align-items: center;
   flex-wrap: wrap;
   background-color: white;
-  max-width: 50vw;
+  max-width: 43vw;
   border-radius: 2px;
   }
 
@@ -34,7 +33,7 @@
 
 .container-title {
   align-items: left;
-  padding-top: 50px;
+  padding-top: 40px;
 
   h2 {
     font-size: 18px;
@@ -42,7 +41,7 @@
 
   p {
     font-size: 15px;
-    padding-bottom: 30px;
+    padding-bottom: 10px;
   }
 }
 
