@@ -1,5 +1,4 @@
 class OrdersController < ApplicationController
-
   def show
     @order = Order.find(params[:id])
     @cart = Cart.find(@order.cart_id)
@@ -16,7 +15,6 @@ class OrdersController < ApplicationController
       # j'obtiens un array des instances, mais pas leur nom
     end
   end
-
 
   def new
     @order = Order.new
@@ -42,15 +40,11 @@ class OrdersController < ApplicationController
     end
   end
 
-
   private
 
   def order_params
     params.require(:order).permit(:address_line_1, :address_zipcode, :address_city, :country, :phone_number)
     # here i only allow the update of the delivery fields
   end
-
-
 end
-
 
