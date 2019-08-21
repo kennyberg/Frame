@@ -70,6 +70,13 @@
   }
 }
 
+.simple_form.edit_product {
+  display: flex;
+  flex-direction: column;
+  select {
+    margin: 20px;
+  }
+}
 
 #priceBox {
   text-align: right;
