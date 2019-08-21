@@ -55,12 +55,12 @@
     </ul>
     <%= form_tag photos_path, method: :get, id:"search-form", class:"form-inline my-2 my-lg-0" do %>
     <div class="d-flex">
-      <div id="fa-fa-fix">
+      <div id="fa-fa-fix" class="search-input">
         <i class="fa fa-search" aria-hidden="true"></i>
       </div>
       <%= text_field_tag :query,
         params[:query],
-        class: "form-control mr-sm-2",
+        class: "search-input form-control mr-sm-2",
         placeholder: "Search"
       %>
 
