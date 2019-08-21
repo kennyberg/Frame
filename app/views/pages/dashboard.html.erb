@@ -115,6 +115,43 @@
       <li style="font-weight: 400">Your last name:<%= @user.last_name %></li>
     </ul>
 
+        <thead>
+          <tr>
+            <th>Email</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Password</th>
+          </tr>
+        </thead>
+<% @orders.each do |order| %>
+        <tbody>
+          <tr class="bg-white" id="profile-row">
+              <td><%=@user.email%> &nbsp; &nbsp; &nbsp; &nbsp;
+                  <%= link_to(edit_user_registration_path, method: :get) do %>
+                  <i class="fa fa-pencil-square-o"></i>
+                  <% end %>
+              </td>
+              <td><%=@user.first_name.capitalize%> &nbsp; &nbsp; &nbsp; &nbsp;
+                  <%= link_to(edit_user_registration_path, method: :get) do %>
+                  <i class="fa fa-pencil-square-o"></i>
+                  <% end %>
+              </td>
+              <td> <%=@user.last_name.capitalize%> &nbsp; &nbsp; &nbsp; &nbsp;
+                  <%= link_to(edit_user_registration_path, method: :get) do %>
+                  <i class="fa fa-pencil-square-o"></i>
+                  <% end %>
+              </td>
+              <td> ● ● ● ● ● ● ● &nbsp; &nbsp; &nbsp; &nbsp;
+                  <%= link_to(edit_user_registration_path, method: :get) do %>
+                  <i class="fa fa-pencil-square-o"></i>
+                  <% end %>
+              </td>
+          </tr>
+        </tbody>
+<% end %>
+      </table>
+    </div>
+
   </div>
 </div>
 <!-- BELOW, END OF THE USER SECTION -->

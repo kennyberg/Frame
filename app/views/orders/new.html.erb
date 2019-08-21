@@ -11,10 +11,15 @@
         <%= f.input :address_line_1 %>
         <%= f.input :address_zipcode %>
         <%= f.input :address_city %>
+        <!-- bug on the simple form input country so has been replaced by pure plain html, works well -->
         <%#= f.input :country %>
-      <div class="pb-3">
-        <%= f.input :phone_number %>
+      <div class="form-group string optional order_country">
+        <label class="form-control-label string optional" for="order_country">Country</label>
+        <input class="form-control string optional" type="text">
+        <div class="pb-3" name="order[country]" id="order_country">
       </div>
+          <%= f.input :phone_number %>
+        </div>
         <%= f.button :submit, class: "btn-yellow" %>
       <% end %>
     </div>
