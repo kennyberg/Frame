@@ -40,7 +40,9 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
     @frame_combo = FrameCombo.where(frame_material_id: params[:frame][:material]).where(frame_dimension_id: params[:frame][:dimension]).first
     @product.frame_combo_id = @frame_combo.id
-    redirect_to user_dashboard_path
+    @product.price = @frame_combo.price
+    @product.save
+    redirect_to cart_path(current_user.carts.last)
   end
 
   private
