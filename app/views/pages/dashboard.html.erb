@@ -114,21 +114,35 @@
 
         <thead>
           <tr>
-            <th>Order ID</th>
-            <th>Order date</th>
-            <th class="text-right">Quantity</th>
-            <th class="text-right">Total</th>
-            <th class="text-right">Details</th>
+            <th>Email</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Password</th>
           </tr>
         </thead>
 <% @orders.each do |order| %>
         <tbody>
-          <tr class="bg-white" id="order-row">
-              <td><%=order.id%></td>
-              <td><%= order.created_at.strftime("%b %d, %Y") %></td>
-              <td class="text-right">number of products</td>
-              <td class="text-right">€ <%= order.amount_cents / 100 %></td>
-              <td class="text-right"><%= link_to '🔎', order_path(order.id) %></td>
+          <tr class="bg-white" id="profile-row">
+              <td><%=@user.email%> &nbsp; &nbsp; &nbsp; &nbsp;
+                  <%= link_to(edit_user_registration_path, method: :get) do %>
+                  <i class="fa fa-pencil-square-o"></i>
+                  <% end %>
+              </td>
+              <td><%=@user.first_name.capitalize%> &nbsp; &nbsp; &nbsp; &nbsp;
+                  <%= link_to(edit_user_registration_path, method: :get) do %>
+                  <i class="fa fa-pencil-square-o"></i>
+                  <% end %>
+              </td>
+              <td> <%=@user.last_name.capitalize%> &nbsp; &nbsp; &nbsp; &nbsp;
+                  <%= link_to(edit_user_registration_path, method: :get) do %>
+                  <i class="fa fa-pencil-square-o"></i>
+                  <% end %>
+              </td>
+              <td> ● ● ● ● ● ● ● &nbsp; &nbsp; &nbsp; &nbsp;
+                  <%= link_to(edit_user_registration_path, method: :get) do %>
+                  <i class="fa fa-pencil-square-o"></i>
+                  <% end %>
+              </td>
           </tr>
         </tbody>
 <% end %>
