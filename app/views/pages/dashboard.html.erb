@@ -88,8 +88,8 @@
           <tr class="bg-white" id="order-row">
               <td><%=order.id%></td>
               <td><%= order.created_at.strftime("%b %d, %Y") %></td>
-              <td class="text-right">number of products</td>
-              <td class="text-right">€ <%= order.amount_cents / 100 %></td>
+              <td class="text-right">number of products: bug à débugger</td>
+              <td class="text-right">€ <%= order.amount_cents / 100 %>,00</td>
               <td class="text-right"><%= link_to '🔎', order_path(order.id) %></td>
           </tr>
         </tbody>
@@ -101,7 +101,7 @@
 <!-- BELOW, END OF THE ORDER SECTION -->
 
 
-<!-- BELOW, BEGINNING OF THE ORDER SECTION -->
+<!-- BELOW, BEGINNING OF THE PROFILE SECTION -->
 <div class="container mt-5 mb-5">
   <ul class="nav nav-tabs" id="myTab" role="tablist">
     <li class="nav-item">
@@ -109,8 +109,11 @@
     </li>
   </ul>
   <div class="row m-0 card border-top-0">
-    <div class="table-responsive table--no-card m-b-40" id="tab-text-container">
-      <table class="table table-borderless table-striped table-earning" id="table">
+    <ul class="list-unstyled">
+      <li style="font-weight: 400">Your email: <%= @user.email %></li>
+      <li style="font-weight: 400">Your first name:<%= @user.first_name %></li>
+      <li style="font-weight: 400">Your last name:<%= @user.last_name %></li>
+    </ul>
 
         <thead>
           <tr>
@@ -148,22 +151,8 @@
 <% end %>
       </table>
     </div>
+
   </div>
 </div>
-<!-- BELOW, END OF THE ORDER SECTION -->
-
-
-
-
-
-
-  <!-- BEGINNING THE PREVIOUS ORDERS SECTION -->
-
- <!--  <%= @user.email %>
-  <%= @user.first_name %>
-  <%= @user.last_name %> -->
-
-  <!-- END OF THE USER INFORMATION SECTION -->
-
-
+<!-- BELOW, END OF THE USER SECTION -->
 
