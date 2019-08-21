@@ -5,6 +5,8 @@ class PagesController < ApplicationController
   end
 
   def dashboard
+    # below, for user information
+    @user = current_user
     # below, for current user favorites
     @favorites = current_user.favorites
     # below, for user's uploaded images section
@@ -12,8 +14,6 @@ class PagesController < ApplicationController
     # below, for previous orders section
     @previous_carts = Cart.where(user_id: current_user.id).where(state: "paid")
     # below, for user previous orders
-    @orders = Cart.where(user: @user)
-    # below, for user information
-    @user = current_user
+    @orders = Order.where(user_id: @user.id)
   end
 end

@@ -34,6 +34,7 @@
     margin: 0px;
     border: 1px solid #dee2e6;
     border-top: 0px;
+    background-color: white;
 
   &:after {
     content: "";
@@ -101,4 +102,51 @@
   opacity: 0.8;
   transition: 0.5s;
   filter: alpha(opacity=80);
+}
+
+// STYLE SPECIFIC TO THE ORDER DASHBOARD
+
+#order-row {
+  border-bottom: 1px solid $black;
+}
+
+#table {
+  margin-top: 20px;
+  margin-bottom: 55px;
+}
+
+#table tr > td {
+  padding-top: 35px;
+}
+
+#tab-text-container {
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+@media(max-width: 780px) {
+  #tab-text-container {
+   max-width: 100%;
+  }
+  #table tr > td {
+    font-size: 14px;
+  }
+}
+
+@media(max-width: 630px) {
+  #tab-text-container {
+   max-width: 100%;
+  }
+  #table tr > td {
+    font-size: 12px;
+  }
+}
+
+@media(max-width: 540px) {
+  #tab-text-container {
+   max-width: 100%;
+  }
+  #table tr > td {
+    font-size: 10px;
+  }
 }
