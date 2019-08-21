@@ -8,12 +8,22 @@
 // STYLE FOR PHOTOS IN THE DASHBOARD
 
 #home-tab {
-  padding: 0px 10px;
+  padding: 6px 20px;
+  font-family: lato;
+  font-size: 14px;
 }
 
 #profile-tab {
-  padding: 0px 10px;
+  padding: 6px 20px;
+  font-family: lato;
+  font-size: 14px;
 }
+
+.nav-link active {
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+}
+
 
 #options {
   margin-top: 3px;
@@ -23,6 +33,9 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 2px;
+  border-bottom-left-radius: 2px;
 }
 
 .tab-content > .active {
