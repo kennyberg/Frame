@@ -1,12 +1,25 @@
-<h1>Order#new</h1>
+<body id="body-blue">
+  <div class="form-container">
 
-<h2>Please give us the delivery information</h2>
-<%= simple_form_for [@cart, @order] do |f| %>
-<%= f.input :address_line_1 %>
-<%= f.input :address_zipcode %>
-<%= f.input :address_city %>
-<%#= f.input :country %>
-<%= f.input :phone_number %>
-<%= f.button :submit %>
-<% end %>
+    <div class="container-title">
+      <h2><%= @user.first_name.capitalize %>, you are alsmost there</h2>
+      <p>Please tell us about the delivery details</p>
+    </div>
+
+    <div class="form-itself pt-3">
+      <%= simple_form_for [@cart, @order] do |f| %>
+        <%= f.input :address_line_1 %>
+        <%= f.input :address_zipcode %>
+        <%= f.input :address_city %>
+        <%#= f.input :country %>
+        <div class="pb-5">
+          <%= f.input :phone_number %>
+        </div>
+        <%= f.button :submit, class: "btn-yellow" %>
+      <% end %>
+    </div>
+
+  </div>
+</body>
+
 

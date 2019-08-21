@@ -1,0 +1,50 @@
+#body-blue {
+  // background-color: rgba(223, 194, 68, 0.27);
+  background-color: $dark-blue;
+}
+
+
+.form-container {
+  display: flex;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0px 20px 50px 20px;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: wrap;
+  background-color: white;
+  max-width: 50vw;
+  border-radius: 2px;
+  }
+
+.form-itself {
+  // max-width: 40vw;
+  font-family: lato;
+  font-size: 15px;
+  color: $black;
+
+  input {
+    width: 28vw;
+    border-radius: 2px;
+
+  }
+}
+
+.container-title {
+  align-items: left;
+  padding-top: 50px;
+
+  h2 {
+    font-size: 18px;
+  }
+
+  p {
+    font-size: 15px;
+    padding-bottom: 30px;
+  }
+}
+
+
+
