@@ -5,7 +5,6 @@
 
 <h2 id="username" >Hello <%= @user.first_name.capitalize %>, welcome in your dashboard</h2>
 
-</div>
 <!-- BELOW, THE CONTAINER FOR THE FAVORITE / UPLOADED SECTION -->
   <div class="container">
       <!-- BEGINNING OF THE NAV TAB FAVORITE / UPLOADED SECTION -->
@@ -63,7 +62,40 @@
 
 
 
-<!-- BELOW, BEGINNING OF THE ORDER SECTION -->
+    <!-- BELOW, THE CONTAINER ORDERS SECTION -->
+      <div class="container mt-5">
+          <!-- BEGINNING OF THE "TAB" ORDER -->
+          <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Orders</a>
+            </li>
+          </ul>
+          <!-- END OF OF THE "TAB" ORDER -->
+
+        <div class="tab-content" id="myTabContent">
+
+          <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+          <!-- BEGINNING OF THE PREVIOUS ORDERS SECTION -->
+            <class class="row">
+              <% @orders.each do |order| %>
+                    <p> <%= order.amount_cents / 100 %> </p>
+                    <p> <%= link_to '🔎', root_path() %> </p>
+              <% end %>
+            </class>
+          <!-- END OF THE FAVORITE SECTION -->
+          </div>
+        <!-- BELOW, END OF THE CONTAINER FOR ORDERS SECTION -->
+        </div>
+      </div>
+
+
+
+
+
+
+
+
+
 <div class="container mt-5 mb-5">
   <ul class="nav nav-tabs" id="myTab" role="tablist">
     <li class="nav-item">
@@ -73,73 +105,69 @@
   <div class="row m-0 card border-top-0">
     <div class="table-responsive table--no-card m-b-40" id="tab-text-container">
       <table class="table table-borderless table-striped table-earning" id="table">
-
         <thead>
-          <tr>
-            <th>Order ID</th>
-            <th>Order date</th>
-            <th class="text-right">Quantity</th>
-            <th class="text-right">Total</th>
-            <th class="text-right">Details</th>
-          </tr>
+            <tr>
+                <th>date</th>
+                <th>order ID</th>
+                <th>name</th>
+                <th class="text-right">price</th>
+                <th class="text-right">quantity</th>
+                <th class="text-right">total</th>
+            </tr>
         </thead>
-<% @orders.each do |order| %>
         <tbody>
-          <tr class="bg-white" id="order-row">
-              <td><%=order.id%></td>
-              <td><%= order.created_at.strftime("%b %d, %Y") %></td>
-              <td class="text-right">number of products</td>
-              <td class="text-right">€ <%= order.amount_cents / 100 %></td>
-              <td class="text-right"><%= link_to '🔎', order_path(order.id) %></td>
-          </tr>
-        </tbody>
-<% end %>
+        <tr class="bg-white" id="order-row">
+            <td>2018-09-29 05:57</td>
+            <td>100398</td>
+            <td>iPhone X 64Gb Grey</td>
+            <td class="text-right">$999.00</td>
+            <td class="text-right">1</td>
+            <td class="text-right">$999.00</td>
+        </tr>
+        <tr class="bg-white" id="order-row">
+            <td>2018-09-28 01:22</td>
+            <td>100397</td>
+            <td>Samsung S8 Black</td>
+            <td class="text-right">$756.00</td>
+            <td class="text-right">1</td>
+            <td class="text-right">$756.00</td>
+        </tr>
+        <tr class="bg-white" id="order-row">
+            <td>2018-09-27 02:12</td>
+            <td>100396</td>
+            <td>Game Console Controller</td>
+            <td class="text-right">$22.00</td>
+            <td class="text-right">2</td>
+            <td class="text-right">$44.00</td>
+        </tr>
+      </tbody>
       </table>
     </div>
   </div>
 </div>
-<!-- BELOW, END OF THE ORDER SECTION -->
-
-
-<!-- BELOW, BEGINNING OF THE ORDER SECTION -->
-<div class="container mt-5 mb-5">
-  <ul class="nav nav-tabs" id="myTab" role="tablist">
-    <li class="nav-item">
-      <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Profile</a>
-    </li>
-  </ul>
-  <div class="row m-0 card border-top-0">
-    <div class="table-responsive table--no-card m-b-40" id="tab-text-container">
-      <table class="table table-borderless table-striped table-earning" id="table">
-
-        <thead>
-          <tr>
-            <th>Order ID</th>
-            <th>Order date</th>
-            <th class="text-right">Quantity</th>
-            <th class="text-right">Total</th>
-            <th class="text-right">Details</th>
-          </tr>
-        </thead>
-<% @orders.each do |order| %>
-        <tbody>
-          <tr class="bg-white" id="order-row">
-              <td><%=order.id%></td>
-              <td><%= order.created_at.strftime("%b %d, %Y") %></td>
-              <td class="text-right">number of products</td>
-              <td class="text-right">€ <%= order.amount_cents / 100 %></td>
-              <td class="text-right"><%= link_to '🔎', order_path(order.id) %></td>
-          </tr>
-        </tbody>
-<% end %>
-      </table>
-    </div>
-  </div>
-</div>
-<!-- BELOW, END OF THE ORDER SECTION -->
 
 
 
+
+
+
+
+
+
+
+
+
+
+  <!-- BEGINNING THE PREVIOUS ORDERS SECTION -->
+<!--
+  <h1>Your orders</h1>
+  <p>Orders</p>
+ -->
+  <%# @orders.each do |order| %>
+  <%#= order.amount %>
+  <%# end %>
+
+  <!-- END OF THE USER INFORMATION SECTION -->
 
 
 
@@ -152,4 +180,4 @@
   <!-- END OF THE USER INFORMATION SECTION -->
 
 
-
+</div>
