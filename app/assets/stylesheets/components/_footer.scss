@@ -1,0 +1,66 @@
+
+/*FOOTER START///////////////////*/
+
+#brand-in-footer {
+  color: #DFC244;
+}
+
+.footer {
+    padding: 50px 0 20px 0;
+    background-color: #272D3D;
+    color: $white;
+}
+.footer .title{text-align: left;color:#fff}
+
+
+.footer .social-icon{padding:0px;margin:0px}
+.footer .social-icon a{display:inline-block;color:#fff;font-size:25px;padding:5px}
+.footer .acount-icon a{display:block;color:#fff;font-size:18px;padding:5px;text-decoration:none}
+.footer .acount-icon .fa{margin-right:25px}
+
+#heart-footer {
+  font-size: 14px;
+  opacity: 1;
+}
+
+.footer .acount-icon a {
+    font-family: $body-font;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 14px;
+    color: $white;
+}
+
+
+.footer .category a {
+    text-decoration: none;
+    color: #fff;
+    display: inline-block;
+    padding: 5px 20px;
+    margin: 1px;
+    border-radius:4px;
+    margin-top: 6px;
+    background-color: black;
+    border: solid 0.5px #fff;
+    font-size: 12px;
+}
+
+.footer .payment{margin:0px;padding:0px;list-style-type:none}
+.footer .payment li{list-style-type:none}
+.footer .payment li a {
+    text-decoration: none;
+    display: inline-block;
+    color: #fff;
+    float: left;
+    font-size: 25px;
+    padding: 10px 10px;
+}
+
+#footer-text {
+  color: $white;
+}
+
+#small-text {
+  font-size: 10px;
+  color: $white;
+}

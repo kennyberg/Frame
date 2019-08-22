@@ -1,6 +1,6 @@
 <body id="body-background">
 
-  <div class="two-columns">
+  <div class="two-columns mb-5">
 
     <div class="card-products-cart">
       <% @products.each do |product| %>
@@ -23,7 +23,7 @@
               <div class="photo-column-3">
                 <p>
                   <%= link_to(edit_product_path(product.id), method: :get) do %>
-                    <i class="fa fa-pen"></i>
+                    <i class="fas fa-pen"></i>
                   <% end %>
 
                   <%= link_to(product_path(product.cart_product.id), data: { confirm: "Are you sure?" }, method: :delete) do %>
@@ -75,7 +75,7 @@
         Have a look to our tutorials about taking the pictures, but also how to transform teir light or contrast.
         </p>
         <h2>MAKE A GIFT</h2>
-        <p>Your probably have ggod friends and a nice family. But when it comes to Christmas or birthdays, you are lacking ideas, are you? We help you delight your friends and family. Tell us about their style, we will come back to you with some proposals.
+        <p>Your probably have good friends and a nice family. But when it comes to Christmas or birthdays, you are lacking ideas, are you? We help you delight your friends and family. Tell us about their style, we will come back to you with some proposals.
         </p>
       </div>
     </div>

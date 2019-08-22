@@ -106,31 +106,31 @@ frame_dimension_attributes = [
   {
     height: 40,
     width: 60,
-    format: '40x60cm'
+    format: '40 x 60 cm'
   },
 
   {
     height: 60,
     width: 90,
-    format: '60x90cm'
+    format: '60 x 90 cm'
   },
 
   {
     height: 80,
     width: 120,
-    format: '80x120cm'
+    format: '80 x 120 cm'
   },
 
   {
     height: 100,
     width: 150,
-    format: '100x150cm'
+    format: '100 x 150 cm'
   },
 
   {
     height: 60,
     width: 40,
-    format: '60x40cm'
+    format: '60 x 40 cm'
   }
 ]
 FrameDimension.create!(frame_dimension_attributes)
