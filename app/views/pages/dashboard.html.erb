@@ -49,7 +49,7 @@
               </div>
               <p id="options" >
               <%= link_to "Frame", photo_path(photo.id) %> |
-              <%= link_to "Remove", photo_path(photo.id), data: { confirm: "You will no longer be able to print that photo. Are you sure?" }, method: :delete %>
+              <%= link_to "Remove", photo_path(photo.id), data: { confirm: "That will also remove the photo from your cart. Are you sure?" }, method: :delete %>
               </p>
             </div>
           <% end %>

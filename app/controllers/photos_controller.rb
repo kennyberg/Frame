@@ -75,13 +75,25 @@ class PhotosController < ApplicationController
 
   def destroy
     @photo = Photo.find(params[:id])
-    @products = Product.where(photo: @photo)
+    @products = Product.where(photo_id: @photo.id)
     @current_cart = Cart.where(user_id: current_user.id).where(state: "pending").first
-      if @cart_product = CartProduct.where(cart: @current_cart).where(product: @product).first
-        @cart_product.destroy
+    if @products
+      @products.each do |product|
+        @cart_products_array = []
+        @one_cart_product = CartProduct.where(cart: @current_cart).where(product_id: product.id).first
+        @cart_products_array << @one_cart_product
       end
-    @products.destroy_all
-    # @photo.upload.file.delete
+
+      @cart_products_array.each do |cart_product|
+        cart_product.destroy
+      end
+    end
+
+    if @products
+      @products.destroy_all
+    end
+
+    @photo.upload.file.delete
     @photo.destroy
     redirect_to user_dashboard_path
   end
@@ -92,7 +104,5 @@ class PhotosController < ApplicationController
     params.require(:photo).permit(:title, :upload, :user_id, :cl_url)
   end
 end
-
-
 
 
