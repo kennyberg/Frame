@@ -47,8 +47,8 @@ class PhotosController < ApplicationController
     @frame_materials = FrameMaterial.all
 
 
-    @frame_dimensions = FrameDimension.where(orientation: @photo.description)
-    @frame_dimensions = FrameDimension.all if @photo.description == "not defined yet"
+    @frame_dimension = FrameDimension.where(orientation: @photo.description)
+    # @frame_dimensions = FrameDimension.all if @photo.description == "not defined yet"
 
     # below, we create an array with a lot of hashes containing the information of every combo
     # we do that so that we can translate those information as a json file
