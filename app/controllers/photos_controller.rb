@@ -4,15 +4,33 @@ class PhotosController < ApplicationController
   def index
     if params[:query] && params[:query] != ""
       @query = params[:query]
-      url = "https://api.pexels.com/v1/search?query=#{@query}+query&per_page=30&page=1"
+      url = "https://api.pexels.com/v1/search?query=#{@query}+query&per_page=78"
       @json_results = RestClient.get(url, headers = { Authorization: ENV['PEXELS_API_KEY'] })
       @results = JSON.parse(@json_results)
+      @max_page = @results["total_results"] / @results["per_page"]
       @photos = @results["photos"]
+        if @results["next_page"]
+          @next_query = @results["next_page"].split("?").last
+        end
     else
-      url = "https://api.pexels.com/v1/curated?per_page=30&page=1"
+      url = "https://api.pexels.com/v1/search?query=art+query&per_page=78"
       @json_results = RestClient.get(url, headers = { Authorization: ENV['PEXELS_API_KEY'] })
       @results = JSON.parse(@json_results)
       @photos = @results["photos"]
+      if @results["next_page"]
+        @next_query = @results["next_page"].split("?").last
+      end
+    end
+  end
+
+  def upload
+    url = "https://api.pexels.com/v1/search/?#{params[:query]}"
+    @json_results = RestClient.get(url, headers = { Authorization: ENV['PEXELS_API_KEY'] })
+    @results = JSON.parse(@json_results)
+    @photos = @results["photos"]
+    @next_query = @results["next_page"].split("?").last
+    respond_to do |format|
+      format.js
     end
   end
 
@@ -56,6 +74,26 @@ class PhotosController < ApplicationController
         @photo.api_url = params["photo"]["api_url"]
         @photo.height = params["photo"]["height"]
         @photo.width = params["photo"]["width"]
+
+        height = @photo.height.to_f
+        width = @photo.width.to_f
+        result = height / width
+        if result < 0.80 && result > 0.70
+          result = 0.75
+        elsif result > 1.40 && result < 1.60
+          result = 1.5
+        else
+          result = result
+        end
+
+        if result == 0.75
+          @photo.description = "portrait"
+        elsif result == 1.5
+          @photo.description = "landscape"
+        else
+          @photo.description = "not defined yet"
+        end
+
         @photo.save
         redirect_to photo_path(@photo.id)
       end
@@ -84,8 +122,10 @@ class PhotosController < ApplicationController
         @cart_products_array << @one_cart_product
       end
 
-      @cart_products_array.each do |cart_product|
-        cart_product.destroy
+      if @cart_products_array
+        @cart_products_array.each do |cart_product|
+          cart_product.destroy
+        end
       end
     end
 

@@ -11,6 +11,10 @@
     <%= link_to "Upload your own 📎", new_photo_path, class: "dropbtn" %>
   </div>
 
+  <div class="dropdown">
+    <%#= @max_page %>
+  </div>
+
 </div>
 
 <div class="grid-photos">
@@ -31,7 +35,14 @@
 
     </div>
   <% end %>
+
 </div>
+
+<div class="more-photos text-center mt-4 mb-4">
+  <a id="upload-button"class="btn btn-primary w-25" href="/upload_index/<%= @next_query %>" data-remote="true">Search More</a>
+</div>
+
+<!-- &max_page=<%#=@max_page %> -->
 
   <%= simple_form_for Photo.new do |f| %>
     <%= f.input :api_id, :as => :hidden %>
