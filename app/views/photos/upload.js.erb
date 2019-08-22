@@ -1,14 +1,7 @@
 //remove the btn
- document.querySelector("#upload-button").remove()
-
-// page=3&amp;per_page=5&amp;query=yoga+query
-// /upload_index/page=3&per_page=5&query=yoga+query
-
-/// upload_button.addEventListener('click', (e) => {
-//   console.log("testing upload button")
-// })
-
 // upload_button.disabled = true
+
+document.querySelector("#upload-button").remove()
 
 document.querySelector(".more-photos").insertAdjacentHTML("beforeend", '<a id="upload-button"class="btn btn-primary w-25" href="/upload_index/<%= @next_query %>" data-remote="true">Search More</a>')
 document.querySelector(".grid-photos").insertAdjacentHTML("beforeend", "<%= j render 'photos', photos: @photos %>")

@@ -9,13 +9,17 @@ class PhotosController < ApplicationController
       @results = JSON.parse(@json_results)
       @max_page = @results["total_results"] / @results["per_page"]
       @photos = @results["photos"]
-      @next_query = @results["next_page"].split("?").last
+        if @results["next_page"]
+          @next_query = @results["next_page"].split("?").last
+        end
     else
-      url = "https://api.pexels.com/v1/curated?per_page=78"
+      url = "https://api.pexels.com/v1/search?query=art+query&per_page=78"
       @json_results = RestClient.get(url, headers = { Authorization: ENV['PEXELS_API_KEY'] })
       @results = JSON.parse(@json_results)
       @photos = @results["photos"]
-      @next_query = @results["next_page"].split("?").last
+      if @results["next_page"]
+        @next_query = @results["next_page"].split("?").last
+      end
     end
   end
 
