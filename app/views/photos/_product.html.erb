@@ -60,13 +60,17 @@
   const photoWoodLandscapeFrame = document.querySelector("#photo-wood-landscape-frame");
   const photoAluLandscapeFrame = document.querySelector("#photo-aluminium-landscape-frame");
   const frameSelect = document.querySelectorAll("select")[1];
+  const formatSelect = document.querySelectorAll("select")[0];
 
   photoWoodLandscapeFrame.style.display = "none";
   photoAluLandscapeFrame.style.display = "none";
+  // photoWoodPortraitFrame.style.display = "non";
+  // photoAluPortraitFrame.style.display = "none";
 
   frameSelect.addEventListener('change', (event) => {
-  const frameMaterial = material.value;
-  console.log(frameMaterial)
+    // const frameDimension = dimension.value;
+    const frameMaterial = material.value;
+    console.log(frameMaterial)
     if (frameMaterial == 0) {
       photoWoodLandscapeFrame.style.display = "none";
       photoAluLandscapeFrame.style.display = "none";
@@ -81,6 +85,7 @@
       photoWithoutFrame.style.display = "none";
     }
   })
+
 
   button.disabled = true;
 
