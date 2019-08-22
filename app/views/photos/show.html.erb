@@ -2,14 +2,30 @@
 <!-- below, show the photo -->
 <div class="this-is-flex-div">
 
-  <div id="large-photo">
+  <div class="large-photo" id="photo-without-frame">
     <% if @photo.cl_url %>
       <%= cl_image_tag @photo.cl_url, class:"photoshow" %>
     <% else %>
       <img data-height="<%=@photo.height%>" data-width="<%=@photo.width%>" class="photoshow" src="<%= @photo_api["src"]["large2x"] %>">
     <% end %>
   </div>
+
+  <div class="picture-container" id="photo-wood-landscape-frame">
+    <div class="picture" style="background-image: url(<%= @photo_api["src"]["large2x"] %>);">
+      <div class="frame">
+          <%= image_tag "frame-wood-landscape.png" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="picture-container" id="photo-aluminium-landscape-frame">
+    <div class="picture" style="background-image: url(<%= @photo_api["src"]["large2x"] %>);">
+      <div class="frame">
+          <%= image_tag "frame-alu-landscape.png" %>
+      </div>
+    </div>
+  </div>
+
   <%= render 'product', product: @product %>
 
 </div>
-

@@ -1,19 +1,14 @@
 
 <!-- below, show the photo -->
-<div class="this-is-flex-card">
+<div class="this-is-flex-div">
 
   <div id="large-photo">
     <% if @photo.cl_url %>
-      <%= cl_image_tag @photo.cl_url, height: 300, width: 400, crop: :fill %>
+      <%= cl_image_tag @photo.cl_url, class:"photoshow" %>
     <% else %>
-      <img id="photoshow" src="<%= @photo_api["src"]["large2x"] %>" height="300" width="400" alt="test">
+      <img class="photoshow" src="<%= @photo_api["src"]["large2x"] %>" >
     <% end %>
   </div>
-
-
-  <div id="large-bloc">
-    <%= render 'product', product: @product %>
-    <p id="priceBox">from <b>€ 39</b></p>
-  </div>
+  <%= render 'product', product: @product %>
 
 </div>
