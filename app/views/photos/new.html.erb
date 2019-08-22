@@ -1,5 +1,20 @@
-<h1>Upload your photo and Fra.me it!</h1>
+<body id="body-blue">
+  <div class="form-container">
 
-<%= render 'form', photo: @photo %>
+    <div class="container-title">
+      <h2>You are also a photographer, right?</h2>
+      <p>Frame your photographis and pimp your home</p>
+    </div>
 
-<p> <%= link_to 'Back to all photos', photos_path %> </p>
+
+    <div class="form-itself pt-2 w-100">
+      <%= render 'form', photo: @photo %>
+    </div>
+
+    <div class="link-style">
+      <p> <%= link_to 'Back to all photos', photos_path %> </p>
+    </div>
+
+  </div>
+</body>
+
