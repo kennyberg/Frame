@@ -1,19 +1,48 @@
 
-.picture-container {
+// .picture-container {
+//   height: 400px;
+//   width: 700px;
+// }
+
+.landscape-container {
   height: 400px;
   width: 700px;
 }
+
+.portrait-container {
+  height: 400px;
+  width: 230px;
+}
+
 
 .picture {
   background-size: cover;
   background-position: center;
 }
 
-.frame {
+// .frame {
+//   height: 400px;
+//   width: 700px;
+//   img {
+//     height: 400px;
+//     width: 700px;
+//   }
+// }
+
+.landscape-frame {
   height: 400px;
   width: 700px;
   img {
     height: 400px;
     width: 700px;
+  }
+}
+
+.portrait-frame {
+  height: 400px;
+  width: 230px;
+  img {
+    height: 400px;
+    width: 230px;
   }
 }
