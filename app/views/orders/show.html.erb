@@ -3,7 +3,7 @@
 
     <div class="container-title w-100">
       <h2 style= "color: #289E5E">Successful payment</h2>
-      <p><%#= @order.user.first_name.capitalize %>,BUGGG!! your art composition is on its way<i class="fas fa-paper-plane pl-2"></i></p>
+      <p><%= @order.user.first_name.capitalize %>, your art composition is on its way<i class="fas fa-paper-plane pl-2"></i></p>
     </div>
 
     <div class="form-itself pt-2 w-100">
@@ -36,14 +36,14 @@
             <tr>
               <td><%= product.photo.title %> <%= product.frame_combo.frame_material.name %> <%= product.frame_combo.frame_dimension.format %></td>
               <td>1</td>
-              <td><%#= product.price %></td>
+              <td>€<%= product.price %></td>
             </tr>
           <% end %>
 
           <tr>
             <td>Total of your order</td>
             <td><%= @cart.cart_products.length %></td>
-            <td><%=humanized_money_with_symbol(@order.amount)%>, <%= @order.state %></td>
+            <td><%=humanized_money_with_symbol(@order.amount)%>,00 - <%= @order.state %> -</td>
           </tr>
         </table>
       </div>

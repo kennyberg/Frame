@@ -91,7 +91,11 @@
               <td><%= order.created_at.strftime("%b %d, %Y") %></td>
               <td class="text-right"> <%= @products.length %> </td>
               <td class="text-right">€ <%= order.amount_cents / 100 %></td>
-              <td class="text-right"><%= link_to '🔎', order_path(order.id) %></td>
+              <td class="text-right">
+                <%= link_to(order_path(order.id), method: :get) do %>
+                <i class="fas fa-search"></i>
+                <% end %>
+              </td>
           </tr>
         </tbody>
 <% end %>
@@ -102,7 +106,7 @@
 <!-- BELOW, END OF THE ORDER SECTION -->
 
 
-<!-- BELOW, BEGINNING OF THE ORDER SECTION -->
+<!-- BELOW, BEGINNING OF THE PROFILE SECTION -->
 <div class="container mt-5 mb-5">
   <ul class="nav nav-tabs" id="myTab" role="tablist">
     <li class="nav-item">
@@ -121,41 +125,36 @@
             <th>Password</th>
           </tr>
         </thead>
-<% @orders.each do |order| %>
+
         <tbody>
           <tr class="bg-white" id="profile-row">
               <td><%=@user.email%> &nbsp; &nbsp; &nbsp; &nbsp;
                   <%= link_to(edit_user_registration_path, method: :get) do %>
-                  <i class="fa fa-pencil-square-o"></i>
+                  <i class="fas fa-pen fontawesome-yellow"></i>
                   <% end %>
               </td>
               <td><%=@user.first_name.capitalize%> &nbsp; &nbsp; &nbsp; &nbsp;
                   <%= link_to(edit_user_registration_path, method: :get) do %>
-                  <i class="fa fa-pencil-square-o"></i>
+                  <i class="fas fa-pen fontawesome-yellow"></i>
                   <% end %>
               </td>
               <td> <%=@user.last_name.capitalize%> &nbsp; &nbsp; &nbsp; &nbsp;
                   <%= link_to(edit_user_registration_path, method: :get) do %>
-                  <i class="fa fa-pencil-square-o"></i>
+                  <i class="fas fa-pen fontawesome-yellow"></i>
                   <% end %>
               </td>
               <td> ● ● ● ● ● ● ● &nbsp; &nbsp; &nbsp; &nbsp;
                   <%= link_to(edit_user_registration_path, method: :get) do %>
-                  <i class="fa fa-pencil-square-o"></i>
+                  <i class="fas fa-pen fontawesome-yellow"></i>
                   <% end %>
               </td>
           </tr>
         </tbody>
-<% end %>
       </table>
     </div>
   </div>
 </div>
-<!-- BELOW, END OF THE ORDER SECTION -->
-
-
-
-
+<!-- BELOW, END OF THE PROFILE SECTION -->
 
 
   <!-- BEGINNING THE PREVIOUS ORDERS SECTION -->
