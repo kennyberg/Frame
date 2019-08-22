@@ -4,15 +4,29 @@ class PhotosController < ApplicationController
   def index
     if params[:query] && params[:query] != ""
       @query = params[:query]
-      url = "https://api.pexels.com/v1/search?query=#{@query}+query&per_page=30&page=1"
+      url = "https://api.pexels.com/v1/search?query=#{@query}+query&per_page=78"
       @json_results = RestClient.get(url, headers = { Authorization: ENV['PEXELS_API_KEY'] })
       @results = JSON.parse(@json_results)
+      @max_page = @results["total_results"] / @results["per_page"]
       @photos = @results["photos"]
+      @next_query = @results["next_page"].split("?").last
     else
-      url = "https://api.pexels.com/v1/curated?per_page=30&page=1"
+      url = "https://api.pexels.com/v1/curated?per_page=78"
       @json_results = RestClient.get(url, headers = { Authorization: ENV['PEXELS_API_KEY'] })
       @results = JSON.parse(@json_results)
       @photos = @results["photos"]
+      @next_query = @results["next_page"].split("?").last
+    end
+  end
+
+  def upload
+    url = "https://api.pexels.com/v1/search/?#{params[:query]}"
+    @json_results = RestClient.get(url, headers = { Authorization: ENV['PEXELS_API_KEY'] })
+    @results = JSON.parse(@json_results)
+    @photos = @results["photos"]
+    @next_query = @results["next_page"].split("?").last
+    respond_to do |format|
+      format.js
     end
   end
 

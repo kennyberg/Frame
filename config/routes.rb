@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
   get '/dashboard', to: 'pages#dashboard', as: 'user_dashboard'
+  get '/upload_index/:query', to: 'photos#upload', as: 'upload_index'
   resources :photos, except: [:edit, :update] do
     resources :products, only: [:create]
   end
