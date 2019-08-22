@@ -10,21 +10,39 @@
     <% end %>
   </div>
 
-  <div class="picture-container" id="photo-wood-landscape-frame">
+  <div class="landscape-container" id="photo-wood-landscape-frame">
     <div class="picture" style="background-image: url(<%= @photo_api["src"]["large2x"] %>);">
-      <div class="frame">
+      <div class="landscape-frame">
           <%= image_tag "frame-wood-landscape.png" %>
       </div>
     </div>
   </div>
 
-  <div class="picture-container" id="photo-aluminium-landscape-frame">
+  <div class="landscape-container" id="photo-aluminium-landscape-frame">
     <div class="picture" style="background-image: url(<%= @photo_api["src"]["large2x"] %>);">
-      <div class="frame">
+      <div class="landscape-frame">
           <%= image_tag "frame-alu-landscape.png" %>
       </div>
     </div>
   </div>
+
+
+  <div class="portrait-container" id="photo-wood-portrait-frame">
+    <div class="picture" style="background-image: url(<%= @photo_api["src"]["large2x"] %>);">
+      <div class="portrait-frame">
+          <%= image_tag "frame-wood-portrait.png" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="portrait-container" id="photo-aluminium-portrait-frame">
+    <div class="picture" style="background-image: url(<%= @photo_api["src"]["large2x"] %>);">
+      <div class="portrait-frame">
+          <%= image_tag "frame-alu-portrait.png" %>
+      </div>
+    </div>
+  </div>
+
 
   <%= render 'product', product: @product %>
 

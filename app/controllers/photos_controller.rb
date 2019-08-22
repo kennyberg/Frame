@@ -43,8 +43,13 @@ class PhotosController < ApplicationController
       end
     @product = Product.new
     # below, we retrieve the dimensions and materials available to display them in dropdown menus
-    @frame_dimensions = FrameDimension.all
+    #if the photo is
     @frame_materials = FrameMaterial.all
+
+
+    @frame_dimension = FrameDimension.where(orientation: @photo.description)
+    # @frame_dimensions = FrameDimension.all if @photo.description == "not defined yet"
+
     # below, we create an array with a lot of hashes containing the information of every combo
     # we do that so that we can translate those information as a json file
     # we will then parse that json file into a javascript file so that we can use javascript on these information
@@ -77,21 +82,27 @@ class PhotosController < ApplicationController
 
         height = @photo.height.to_f
         width = @photo.width.to_f
-        result = height / width
-        if result < 0.80 && result > 0.70
-          result = 0.75
-        elsif result > 1.40 && result < 1.60
-          result = 1.5
-        else
-          result = result
-        end
+        # result = height / width
+        # if result < 0.80 && result > 0.70
+        #   result = 0.75
+        # elsif result > 1.40 && result < 1.60
+        #   result = 1.5
+        # else
+        #   result = result
+        # end
 
-        if result == 0.75
-          @photo.description = "portrait"
-        elsif result == 1.5
-          @photo.description = "landscape"
+        # if result == 0.75
+        #   @photo.description = "portrait"
+        # elsif result == 1.5
+        #   @photo.description = "landscape"
+        # else
+        #   @photo.description = "not defined yet"
+        # end
+
+        if height >= width
+          @photo.description = 'portrait'
         else
-          @photo.description = "not defined yet"
+          @photo.description = 'landscape'
         end
 
         @photo.save

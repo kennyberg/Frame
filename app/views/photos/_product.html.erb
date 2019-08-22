@@ -59,30 +59,55 @@
   const photoWithoutFrame = document.querySelector("#photo-without-frame");
   const photoWoodLandscapeFrame = document.querySelector("#photo-wood-landscape-frame");
   const photoAluLandscapeFrame = document.querySelector("#photo-aluminium-landscape-frame");
+  const photoWoodPortraitFrame = document.querySelector("#photo-wood-portrait-frame");
+  const photoAluPortraitFrame = document.querySelector("#photo-aluminium-portrait-frame");
+
   const frameSelect = document.querySelectorAll("select")[1];
   const formatSelect = document.querySelectorAll("select")[0];
 
   photoWoodLandscapeFrame.style.display = "none";
   photoAluLandscapeFrame.style.display = "none";
-  // photoWoodPortraitFrame.style.display = "non";
-  // photoAluPortraitFrame.style.display = "none";
+  photoWoodPortraitFrame.style.display = "none";
+  photoAluPortraitFrame.style.display = "none";
 
+
+// __________________________________________________________________________
   frameSelect.addEventListener('change', (event) => {
-    // const frameDimension = dimension.value;
+    const frameDimension = dimension.value;
     const frameMaterial = material.value;
     console.log(frameMaterial)
+    console.log(frameDimension)
+
     if (frameMaterial == 0) {
       photoWoodLandscapeFrame.style.display = "none";
       photoAluLandscapeFrame.style.display = "none";
       photoWithoutFrame.style.display = "block";
-    } else if (frameMaterial == 1) {
+      photoWoodPortraitFrame.style.display = "none";
+      photoAluPortraitFrame.style.display = "none";
+    } else if (frameMaterial == 1 && frameDimension < 5) {
+      photoAluLandscapeFrame.style.display = "none";
+      photoWoodLandscapeFrame.style.display = "none";
+      photoWithoutFrame.style.display = "none";
+      photoWoodPortraitFrame.style.display = "block";
+      photoAluPortraitFrame.style.display = "none";
+    } else if (frameMaterial == 1 && frameDimension == 5) {
       photoAluLandscapeFrame.style.display = "none";
       photoWoodLandscapeFrame.style.display = "block";
       photoWithoutFrame.style.display = "none";
-    } else if (frameMaterial == 2) {
+      photoWoodPortraitFrame.style.display = "none";
+      photoAluPortraitFrame.style.display = "none";
+    } else if (frameMaterial == 2 && frameDimension < 5) {
+      photoWoodLandscapeFrame.style.display = "none";
+      photoAluLandscapeFrame.style.display = "none";
+      photoWithoutFrame.style.display = "none";
+      photoWoodPortraitFrame.style.display = "none";
+      photoAluPortraitFrame.style.display = "block";
+    } else if (frameMaterial == 2 && frameDimension == 5) {
       photoWoodLandscapeFrame.style.display = "none";
       photoAluLandscapeFrame.style.display = "block";
       photoWithoutFrame.style.display = "none";
+      photoWoodPortraitFrame.style.display = "none";
+      photoAluPortraitFrame.style.display = "none";
     }
   })
 
@@ -96,3 +121,39 @@
     button.disabled = false;
   }
 </script>
+<!-- ________________________________________________________________________ -->
+
+
+<!-- frameSelect.addEventListener('change', (event) => {
+    const frameDimension = dimension.value;
+    const frameMaterial = material.value;
+    console.log(frameMaterial)
+    if (frameMaterial == 0) {
+      photoWoodLandscapeFrame.style.display = "none";
+      photoAluLandscapeFrame.style.display = "none";
+      photoWithoutFrame.style.display = "block";
+      photoAluPortraitFrame.style.display = = "none";
+    } else if (frameMaterial == 1) {
+      photoAluLandscapeFrame.style.display = "none";
+      photoWoodLandscapeFrame.style.display = "block";
+      photoWithoutFrame.style.display = "none";
+      photoWoodPortraitFrame.style.display = "none";
+    } else if (frameMaterial == 2) {
+      photoWoodLandscapeFrame.style.display = "none";
+      photoAluLandscapeFrame.style.display = "block";
+      photoWithoutFrame.style.display = "none";
+      photoWoodPortraitFrame.style.display = "none";
+    }
+  })
+
+
+  button.disabled = true;
+
+  if (material.value === "" || dimension.value === "" ) {
+    button.disabled = true;
+  }
+  else {
+    button.disabled = false;
+  }
+</script>
+ -->

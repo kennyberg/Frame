@@ -106,31 +106,36 @@ frame_dimension_attributes = [
   {
     height: 40,
     width: 60,
-    format: '40 x 60 cm'
+    format: '40 x 60 cm',
+    orientation: 'portrait',
   },
 
   {
     height: 60,
     width: 90,
-    format: '60 x 90 cm'
+    format: '60 x 90 cm',
+    orientation: 'portrait',
   },
 
   {
     height: 80,
     width: 120,
-    format: '80 x 120 cm'
+    format: '80 x 120 cm',
+    orientation: 'portrait',
   },
 
   {
     height: 100,
     width: 150,
-    format: '100 x 150 cm'
+    format: '100 x 150 cm',
+    orientation: 'portrait',
   },
 
   {
     height: 60,
     width: 40,
-    format: '60 x 40 cm'
+    format: '60 x 40 cm',
+    orientation: 'landscape',
   }
 ]
 FrameDimension.create!(frame_dimension_attributes)
