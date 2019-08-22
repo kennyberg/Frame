@@ -21,7 +21,7 @@
             <h2 class="title">My Account</h2>
             <span class="acount-icon">
             <a href="/dashboard"><i class="fa fa-heart mr-" id="heart-footer" aria-hidden="true"></i> Wish List</a>
-            <a href="#"><i class="fa fa-cart-plus" aria-hidden="true"></i> Cart</a>
+            <a href="/carts/<%=Cart.where(user_id: current_user.id).where(state: "pending").first.id%>"><i class="fa fa-cart-plus" aria-hidden="true"></i> Cart</a>
             <a href="/dashboard"><i class="fa fa-user" aria-hidden="true"></i> Profile</a>
             <a href="#"><i class="fa fa-globe" aria-hidden="true"></i> Language</a>
           </span>

@@ -3,7 +3,7 @@ const showPrice = (price) => {
   // below, we select the element on the html where we would like to display the price
   // then we do innerHTML so we can access the text field of that html element
   // we insert the price passed as argument inside that html text field
-  document.querySelector("#priceBox").innerHTML = "<b>" + "€ " + price + "</b>"
+  document.querySelector("#priceBox").innerHTML = "<b>" + "€ " + price + ",00" + "</b>"
 }
 
 const filterPrice = (dimension, material) => {
