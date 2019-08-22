@@ -6,9 +6,10 @@
     <% if @photo.cl_url %>
       <%= cl_image_tag @photo.cl_url, class:"photoshow" %>
     <% else %>
-      <img class="photoshow" src="<%= @photo_api["src"]["large2x"] %>" >
+      <img data-height="<%=@photo.height%>" data-width="<%=@photo.width%>" class="photoshow" src="<%= @photo_api["src"]["large2x"] %>">
     <% end %>
   </div>
   <%= render 'product', product: @product %>
 
 </div>
+
