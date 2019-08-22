@@ -2,7 +2,12 @@
   <!-- [...] -->
   <%= f.input :title %>
   <%= f.input :upload %>
+  <div class="pb-3">
   <%= f.input :upload_cache, as: :hidden %>
-  <%= f.button :submit %>
+  </div>
+  <%= f.button :submit, class: "btn-yellow" %>
   <!-- [...] -->
 <% end %>
+
+
+

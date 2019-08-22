@@ -68,7 +68,14 @@
     box-shadow: 1px 1px 6px rgba(196, 196, 196, 0.2);
     border-radius: 2px;
     margin: 5px;
+    object-fit: cover;
   }
+}
+
+.cart-image {
+  height: 150px;
+  width: 150px;
+  object-fit: cover;
 }
 
 .photo-column-2 {
