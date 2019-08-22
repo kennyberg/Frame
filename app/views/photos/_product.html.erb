@@ -56,6 +56,32 @@
   const material = document.querySelector("#material");
   const dimension = document.querySelector("#dimension");
 
+  const photoWithoutFrame = document.querySelector("#photo-without-frame");
+  const photoWoodLandscapeFrame = document.querySelector("#photo-wood-landscape-frame");
+  const photoAluLandscapeFrame = document.querySelector("#photo-aluminium-landscape-frame");
+  const frameSelect = document.querySelectorAll("select")[1];
+
+  photoWoodLandscapeFrame.style.display = "none";
+  photoAluLandscapeFrame.style.display = "none";
+
+  frameSelect.addEventListener('change', (event) => {
+  const frameMaterial = material.value;
+  console.log(frameMaterial)
+    if (frameMaterial == 0) {
+      photoWoodLandscapeFrame.style.display = "none";
+      photoAluLandscapeFrame.style.display = "none";
+      photoWithoutFrame.style.display = "block";
+    } else if (frameMaterial == 1) {
+      photoAluLandscapeFrame.style.display = "none";
+      photoWoodLandscapeFrame.style.display = "block";
+      photoWithoutFrame.style.display = "none";
+    } else if (frameMaterial == 2) {
+      photoWoodLandscapeFrame.style.display = "none";
+      photoAluLandscapeFrame.style.display = "block";
+      photoWithoutFrame.style.display = "none";
+    }
+  })
+
   button.disabled = true;
 
   if (material.value === "" || dimension.value === "" ) {

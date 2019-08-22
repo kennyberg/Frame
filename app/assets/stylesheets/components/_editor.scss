@@ -1,0 +1,19 @@
+
+.picture-container {
+  height: 400px;
+  width: 700px;
+}
+
+.picture {
+  background-size: cover;
+  background-position: center;
+}
+
+.frame {
+  height: 400px;
+  width: 700px;
+  img {
+    height: 400px;
+    width: 700px;
+  }
+}
