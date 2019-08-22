@@ -8,7 +8,7 @@
           <% product.photo.id %>
             <% if product.photo.api_id %>
               <div class="photo-column-1">
-                <img src="<%= Photo.find(product.photo.id).api_url %>" height="150" width="200" alt="test">
+                <img src="<%= Photo.find(product.photo.id).api_url %>" alt="test" class="cart-image">
               </div>
 
               <div class="photo-column-2">
@@ -40,7 +40,7 @@
           <!-- photo uploaded by the user and in the current cart -->
             <% else %>
               <div class="photo-column-1">
-                <%= cl_image_tag product.photo.cl_url, height: 150, width: 200, crop: :fill, id: 'uploaded-image' %>
+                <%= cl_image_tag product.photo.cl_url, id: 'uploaded-image', class: "cart-image" %>
               </div>
 
               <div class="photo-column-2">
