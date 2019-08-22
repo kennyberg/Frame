@@ -12,9 +12,15 @@
               </div>
 
               <div class="photo-column-2">
-                <h2><%= product.photo.title %></h2>
+
+                <% if product.photo.title.nil? %>
+                  <h2>Untitled</h2>
+                <% else %>
+                  <h2><%= product.photo.title %></h2>
+                <% end %>
+
                 <div class="cart-info">
-                  <p><%= product.frame_combo.frame_material.name %></p>
+                  <p><%= product.frame_combo.frame_material.name %> frame</p>
                   <p>Format <%= product.frame_combo.frame_dimension.format %></p>
                 </div>
                 <h2>€ <%= product.price %></h2>
@@ -40,7 +46,7 @@
               <div class="photo-column-2">
                 <h2><%= product.photo.title %></h2>
                 <div class="cart-info">
-                  <p><%= product.frame_combo.frame_material.name %></p>
+                  <p><%= product.frame_combo.frame_material.name %> frame</p>
                   <p>Format <%= product.frame_combo.frame_dimension.format %></p>
                 </div>
                 <h2>€ <%= product.price %></h2>
