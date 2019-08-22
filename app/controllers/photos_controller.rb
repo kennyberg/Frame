@@ -56,7 +56,6 @@ class PhotosController < ApplicationController
         price: combo.price.fractional/100
       }
     end
-    raise
   end
 
   def new
