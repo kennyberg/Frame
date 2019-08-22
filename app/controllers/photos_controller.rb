@@ -122,8 +122,10 @@ class PhotosController < ApplicationController
         @cart_products_array << @one_cart_product
       end
 
-      @cart_products_array.each do |cart_product|
-        cart_product.destroy
+      if @cart_products_array
+        @cart_products_array.each do |cart_product|
+          cart_product.destroy
+        end
       end
     end
 
