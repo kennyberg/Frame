@@ -56,6 +56,7 @@ class PhotosController < ApplicationController
         price: combo.price.fractional/100
       }
     end
+    raise
   end
 
   def new
@@ -74,6 +75,26 @@ class PhotosController < ApplicationController
         @photo.api_url = params["photo"]["api_url"]
         @photo.height = params["photo"]["height"]
         @photo.width = params["photo"]["width"]
+
+        height = @photo.height.to_f
+        width = @photo.width.to_f
+        result = height / width
+        if result < 0.80 && result > 0.70
+          result = 0.75
+        elsif result > 1.40 && result < 1.60
+          result = 1.5
+        else
+          result = result
+        end
+
+        if result == 0.75
+          @photo.description = "portrait"
+        elsif result == 1.5
+          @photo.description = "landscape"
+        else
+          @photo.description = "not defined yet"
+        end
+
         @photo.save
         redirect_to photo_path(@photo.id)
       end
