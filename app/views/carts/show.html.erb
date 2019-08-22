@@ -23,7 +23,7 @@
               <div class="photo-column-3">
                 <p>
                   <%= link_to(edit_product_path(product.id), method: :get) do %>
-                    <i class="fa fa-pen"></i>
+                    <i class="fas fa-pen"></i>
                   <% end %>
 
                   <%= link_to(product_path(product.cart_product.id), data: { confirm: "Are you sure?" }, method: :delete) do %>
