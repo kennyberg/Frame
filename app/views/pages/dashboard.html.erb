@@ -22,6 +22,10 @@
     <div class="tab-content" id="myTabContent">
 
       <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+
+        <% if @favorites.blank?  %>
+            <p>You do not have any favorite photography yet.</p>
+         <% else %>
       <!-- BEGINNING OF THE FAVORITE PHOTOS SECTION -->
           <% @favorites.each do |favorite| %>
             <div class="dashboard-image-card">
@@ -35,13 +39,22 @@
             </div>
           <% end %>
       <!-- END OF THE FAVORITE SECTION -->
+
+        <% end %>
       </div>
 
 
       <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
         <!-- BEGINNING OF THE UPLOADED PHOTOS SECTION -->
         <!-- Below, display the user's photos, i.e. the ones that he has downloaded -->
-        <% if @uploaded_photos %>
+        <% if @uploaded_photos.blank? %>
+            <p> You did not upload any picture yet.
+              <br>
+                <%= link_to(new_photo_path, method: :get) do %>
+                <i class="fas fa-paperclip fontawesome-yellow dashboard-link"> Upload one now</i>
+                <% end %>
+            </p>
+        <% else %>
           <% @uploaded_photos.each do |photo| %>
             <div class="dashboard-image-card">
               <div class="frame-effet">
@@ -51,9 +64,8 @@
               <%= link_to "Frame", photo_path(photo.id) %> |
               <%= link_to "Remove", photo_path(photo.id), data: { confirm: "You will no longer be able to print that photo. Are you sure?" }, method: :delete %>
               </p>
-            </div>
+              </div>
           <% end %>
-        <% else %>
         <% end %>
         <!-- END OF THE UPLOADED PHOTOS SECTION -->
       </div>
@@ -74,6 +86,9 @@
     <div class="table-responsive table--no-card m-b-40" id="tab-text-container">
       <table class="table table-borderless table-striped table-earning" id="table">
 
+      <% if @orders.blank?  %>
+        <p>You did not frame anything yet.</p>
+      <% else %>
         <thead>
           <tr>
             <th>Order ID</th>
@@ -83,22 +98,24 @@
             <th class="text-right">Details</th>
           </tr>
         </thead>
-<% @orders.each do |order| %>
-<% @products = CartProduct.where(cart_id: Cart.find(order.cart_id)) %>
-        <tbody>
-          <tr class="bg-white" id="order-row">
-              <td><%=order.id%></td>
-              <td><%= order.created_at.strftime("%b %d, %Y") %></td>
-              <td class="text-right"> <%= @products.length %> </td>
-              <td class="text-right">€ <%= order.amount_cents / 100 %></td>
-              <td class="text-right">
-                <%= link_to(order_path(order.id), method: :get) do %>
-                <i class="fas fa-search"></i>
-                <% end %>
-              </td>
-          </tr>
-        </tbody>
-<% end %>
+          <% @orders.each do |order| %>
+          <% @products = CartProduct.where(cart_id: Cart.find(order.cart_id)) %>
+          <tbody>
+            <tr class="bg-white" id="order-row">
+                <td><%=order.id%></td>
+                <td><%= order.created_at.strftime("%b %d, %Y") %></td>
+                <td class="text-right"> <%= @products.length %> </td>
+                <td class="text-right">€ <%= order.amount_cents / 100 %></td>
+                <td class="text-right">
+                  <%= link_to(order_path(order.id), method: :get) do %>
+                  <i class="fas fa-search"></i>
+                  <% end %>
+                </td>
+            </tr>
+          </tbody>
+          <% end %>
+        <% end %>
+
       </table>
     </div>
   </div>
