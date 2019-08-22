@@ -11,6 +11,10 @@
     <%= link_to "Upload your own 📎", new_photo_path, class: "dropbtn" %>
   </div>
 
+  <div class="dropdown">
+    <%#= @max_page %>
+  </div>
+
 </div>
 
 <div class="grid-photos">
@@ -31,7 +35,14 @@
 
     </div>
   <% end %>
+
 </div>
+
+<div class="more-photos text-center mt-4 mb-4">
+  <a id="upload-button"class="btn btn-primary w-25" href="/upload_index/<%= @next_query %>" data-remote="true">Search More</a>
+</div>
+
+<!-- &max_page=<%#=@max_page %> -->
 
   <%= simple_form_for Photo.new do |f| %>
     <%= f.input :api_id, :as => :hidden %>
@@ -56,9 +67,9 @@
 </p> -->
 
 <script> // FILTER PORTRAIT & LANDSCAPE
-  const photos = document.querySelectorAll(".photoindex")
-  const portrait = document.querySelector("#portrait")
-  const landscape = document.querySelector("#landscape")
+  let photos = document.querySelectorAll(".photoindex")
+  let portrait = document.querySelector("#portrait")
+  let landscape = document.querySelector("#landscape")
 
   portrait.addEventListener('click', (e) => {
     portrait.classList.toggle("btn-activated");
@@ -77,11 +88,12 @@
       }
     })
   })
+
 // WHEN USER CLICKS ON A PHOTO, CREATE A NEW PHOTO
-  const form_id = document.querySelector("#photo_api_id")
-  const form_url = document.querySelector("#photo_api_url")
-  const form_height = document.querySelector("#photo_height")
-  const form_width = document.querySelector("#photo_width")
+  let form_id = document.querySelector("#photo_api_id")
+  let form_url = document.querySelector("#photo_api_url")
+  let form_height = document.querySelector("#photo_height")
+  let form_width = document.querySelector("#photo_width")
 
 
   photos.forEach((photo) => {
@@ -95,25 +107,12 @@
     })
   })
 
-  //This is a form for a new favorite
-  // if (idsAdd){
-  //   idsAdd.forEach((id) => {
-  //   document.querySelector(`.fa-heart[data-id='${id}']`).classList.add("icon-clicked")
-  // })
 
-  // }
-  // if (idsRemove){
-  //     idsRemove.forEach((id) => {
-  //   document.querySelector(`.fa-heart[data-id='${id}']`).classList.remove("icon-clicked")
-  // })
-
-  // }
-
-
-  const favoritesForm = document.querySelector("#new_favorite")
-  const hearts = document.querySelectorAll(".fa-heart")
-  const apiUrl = document.querySelector("#favorite_api_url")
-  const apiId = document.querySelector("#favorite_api_id")
+// WHEN USER CLICKS ON A HEART, ADD IT TO THE FAVORITES
+  let favoritesForm = document.querySelector("#new_favorite")
+  let hearts = document.querySelectorAll(".fa-heart")
+  let apiUrl = document.querySelector("#favorite_api_url")
+  let apiId = document.querySelector("#favorite_api_id")
   let addIds = JSON.parse(localStorage.getItem("addIds")) || [];
   let removeIds = JSON.parse(localStorage.getItem("removeIds")) || [];
 
@@ -134,11 +133,9 @@
         localStorage.setItem("removeIds", JSON.stringify(removeIds));
         localStorage.setItem("addIds", JSON.stringify(addIds));
         Rails.fire(favoritesForm, "submit")
-
       }
     })
   })
-
 
 </script>
 
