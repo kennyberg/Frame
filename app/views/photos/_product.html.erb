@@ -17,7 +17,7 @@
           <div class="dropdown mb-4">
             <select name="frame[dimension]" id="dimension" class="dropbtn">
               <option value="">Select a size</option>
-              <% @frame_dimensions.each do |dimension| %>
+              <% @frame_dimension.each do |dimension| %>
 
                 <option class="dropdown-content btn-desactivated" value="<%= dimension.id %>"><%= dimension.format %></option>
               <% end %>
@@ -65,6 +65,7 @@
   const frameSelect = document.querySelectorAll("select")[1];
   const formatSelect = document.querySelectorAll("select")[0];
 
+
   photoWoodLandscapeFrame.style.display = "none";
   photoAluLandscapeFrame.style.display = "none";
   photoWoodPortraitFrame.style.display = "none";
@@ -72,6 +73,7 @@
 
 
 // __________________________________________________________________________
+      formatSelect.addEventListener('change', (event) => {
   frameSelect.addEventListener('change', (event) => {
     const frameDimension = dimension.value;
     const frameMaterial = material.value;
@@ -109,6 +111,7 @@
       photoWoodPortraitFrame.style.display = "none";
       photoAluPortraitFrame.style.display = "none";
     }
+  })
   })
 
 
