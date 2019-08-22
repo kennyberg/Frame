@@ -4,7 +4,7 @@ class PhotosController < ApplicationController
   def index
     if params[:query] && params[:query] != ""
       @query = params[:query]
-      url = "https://api.pexels.com/v1/search?query=#{@query}+query&per_page=78"
+      url = "https://api.pexels.com/v1/search?query=#{@query}+query&per_page=10"
       @json_results = RestClient.get(url, headers = { Authorization: ENV['PEXELS_API_KEY'] })
       @results = JSON.parse(@json_results)
       @max_page = @results["total_results"] / @results["per_page"]
@@ -13,7 +13,7 @@ class PhotosController < ApplicationController
           @next_query = @results["next_page"].split("?").last
         end
     else
-      url = "https://api.pexels.com/v1/search?query=art+query&per_page=78"
+      url = "https://api.pexels.com/v1/search?query=art+query&per_page=10"
       @json_results = RestClient.get(url, headers = { Authorization: ENV['PEXELS_API_KEY'] })
       @results = JSON.parse(@json_results)
       @photos = @results["photos"]
@@ -58,7 +58,7 @@ class PhotosController < ApplicationController
       {
         material: combo.frame_material_id,
         dimension: combo.frame_dimension_id,
-        price: combo.price.fractional/100
+        price: combo.price.fractional / 100
       }
     end
   end

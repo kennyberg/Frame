@@ -5,3 +5,78 @@ document.querySelector("#upload-button").remove()
 
 document.querySelector(".more-photos").insertAdjacentHTML("beforeend", '<a id="upload-button"class="btn btn-primary w-25" href="/upload_index/<%= @next_query %>" data-remote="true">Search More</a>')
 document.querySelector(".grid-photos").insertAdjacentHTML("beforeend", "<%= j render 'photos', photos: @photos %>")
+
+
+// FILTER PORTRAIT & LANDSCAPE
+    photos = document.querySelectorAll(".photoindex")
+    portrait = document.querySelector("#portrait")
+    landscape = document.querySelector("#landscape")
+
+    portrait.addEventListener('click', (e) => {
+      portrait.classList.toggle("btn-activated");
+      photos.forEach((photo) => {
+        if (photo.dataset.height < photo.dataset.width * 1.5) {
+          photo.parentElement.classList.toggle("display");
+        }
+      })
+    })
+
+    landscape.addEventListener('click', (e) => {
+      landscape.classList.toggle("btn-activated");
+      photos.forEach((photo) => {
+        if (photo.dataset.height * 1.5 > photo.dataset.width) {
+          photo.parentElement.classList.toggle("display");
+        }
+      })
+    })
+
+  // WHEN USER CLICKS ON A PHOTO, CREATE A NEW PHOTO
+    form_id = document.querySelector("#photo_api_id")
+    form_url = document.querySelector("#photo_api_url")
+    form_height = document.querySelector("#photo_height")
+    form_width = document.querySelector("#photo_width")
+
+
+    photos.forEach((photo) => {
+
+      photo.addEventListener('click', (e) => {
+        form_id.value = photo.dataset.id
+        form_url.value = photo.src
+        form_height.value = photo.dataset.height
+        form_width.value = photo.dataset.width
+        document.querySelector("#new_photo").submit()
+      })
+    })
+
+
+  // WHEN USER CLICKS ON A HEART, ADD IT TO THE FAVORITES
+    favoritesForm = document.querySelector("#new_favorite")
+    hearts = document.querySelectorAll(".fa-heart")
+    apiUrl = document.querySelector("#favorite_api_url")
+    apiId = document.querySelector("#favorite_api_id")
+    addIds = JSON.parse(localStorage.getItem("addIds")) || [];
+    removeIds = JSON.parse(localStorage.getItem("removeIds")) || [];
+
+    hearts.forEach((heart)=>{
+      heart.addEventListener('click', (e) => {
+        apiId.value = e.target.dataset.id
+        apiUrl.value = e.target.dataset.src
+        if (e.target.classList.contains("icon-clicked")) {
+          addIds = addIds.filter(function(item) { return item !== e.target.dataset.id })
+          removeIds.push(e.target.dataset.id)
+          localStorage.setItem("removeIds", JSON.stringify(removeIds));
+          localStorage.setItem("addIds", JSON.stringify(addIds));
+          document.querySelector(`a[data-apiid='${e.target.dataset.id}']`).click()
+          e.target.classList.remove("icon-clicked")
+        } else {
+          removeIds = removeIds.filter(function(item) { return item !== e.target.dataset.id })
+          addIds.push(e.target.dataset.id)
+          localStorage.setItem("removeIds", JSON.stringify(removeIds));
+          localStorage.setItem("addIds", JSON.stringify(addIds));
+          Rails.fire(favoritesForm, "submit")
+        }
+      })
+    })
+
+
+
