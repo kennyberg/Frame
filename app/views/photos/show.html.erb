@@ -52,7 +52,7 @@
       </div>
     </div>
     <% else %>
-      div class="picture" style="background-image: url(<%= @photo_api["src"]["large2x"] %>);">
+      <div class="picture" style="background-image: url(<%= @photo_api["src"]["large2x"] %>);">
       <div class="portrait-frame">
           <%= image_tag "frame-wood-portrait.png" %>
       </div>
@@ -68,11 +68,11 @@
       </div>
     </div>
     <% else %>
-        <div class="picture" style="background-image: url(<%= @photo_api["src"]["large2x"] %>);">
-      <div class="portrait-frame">
-          <%= image_tag "frame-alu-portrait.png" %>
+      <div class="picture" style="background-image: url(<%= @photo_api["src"]["large2x"] %>);">
+        <div class="portrait-frame">
+            <%= image_tag "frame-alu-portrait.png" %>
+        </div>
       </div>
-    </div>
 
     <% end %>
   </div>
