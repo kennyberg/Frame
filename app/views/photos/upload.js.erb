@@ -8,10 +8,12 @@ document.querySelector(".grid-photos").insertAdjacentHTML("beforeend", "<%= j re
 
 
 // FILTER PORTRAIT & LANDSCAPE
+
     photos = document.querySelectorAll(".photoindex")
     portrait = document.querySelector("#portrait")
     landscape = document.querySelector("#landscape")
 
+function filterAgain() {
     portrait.addEventListener('click', (e) => {
       portrait.classList.toggle("btn-activated");
       photos.forEach((photo) => {
@@ -29,6 +31,7 @@ document.querySelector(".grid-photos").insertAdjacentHTML("beforeend", "<%= j re
         }
       })
     })
+}
 
   // WHEN USER CLICKS ON A PHOTO, CREATE A NEW PHOTO
     form_id = document.querySelector("#photo_api_id")
