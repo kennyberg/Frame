@@ -11,36 +11,70 @@
   </div>
 
   <div class="landscape-container" id="photo-wood-landscape-frame">
+    <% if @photo.cl_url %>
+    <div class="picture" style="background-image: url(<%= @photo.cl_url %>);">
+      <div class="landscape-frame">
+          <%= image_tag "frame-wood-landscape.png" %>
+      </div>
+    </div>
+    <% else %>
     <div class="picture" style="background-image: url(<%= @photo_api["src"]["large2x"] %>);">
       <div class="landscape-frame">
           <%= image_tag "frame-wood-landscape.png" %>
       </div>
     </div>
+    <% end %>
   </div>
 
   <div class="landscape-container" id="photo-aluminium-landscape-frame">
+    <% if @photo.cl_url %>
+    <div class="picture" style="background-image: url(<%= @photo.cl_url %>);">
+      <div class="landscape-frame">
+          <%= image_tag "frame-alu-landscape.png" %>
+      </div>
+    </div>
+    <% else %>
     <div class="picture" style="background-image: url(<%= @photo_api["src"]["large2x"] %>);">
       <div class="landscape-frame">
           <%= image_tag "frame-alu-landscape.png" %>
       </div>
     </div>
+
+    <% end %>
   </div>
 
 
   <div class="portrait-container" id="photo-wood-portrait-frame">
-    <div class="picture" style="background-image: url(<%= @photo_api["src"]["large2x"] %>);">
+    <% if @photo.cl_url %>
+    <div class="picture" style="background-image: url(<%= @photo.cl_url %>);">
       <div class="portrait-frame">
           <%= image_tag "frame-wood-portrait.png" %>
       </div>
     </div>
+    <% else %>
+      div class="picture" style="background-image: url(<%= @photo_api["src"]["large2x"] %>);">
+      <div class="portrait-frame">
+          <%= image_tag "frame-wood-portrait.png" %>
+      </div>
+    </div>
+    <% end %>
   </div>
 
   <div class="portrait-container" id="photo-aluminium-portrait-frame">
-    <div class="picture" style="background-image: url(<%= @photo_api["src"]["large2x"] %>);">
+    <% if @photo.cl_url %>
+    <div class="picture" style="background-image: url(<%= @photo.cl_url %>);">
       <div class="portrait-frame">
           <%= image_tag "frame-alu-portrait.png" %>
       </div>
     </div>
+    <% else %>
+        <div class="picture" style="background-image: url(<%= @photo_api["src"]["large2x"] %>);">
+      <div class="portrait-frame">
+          <%= image_tag "frame-alu-portrait.png" %>
+      </div>
+    </div>
+
+    <% end %>
   </div>
 
 
