@@ -6,6 +6,15 @@ class FavoritesController < ApplicationController
       @photo = Photo.new
       @photo.api_id = params[:api_id]
       @photo.api_url = params[:url_id]
+      @photo.height = params[:height].to_i
+      @photo.width = params[:width].to_i
+      height = @photo.height.to_f
+      width = @photo.width.to_f
+      if height >= width
+        @photo.description = 'portrait'
+      else
+        @photo.description = 'landscape'
+      end
       @photo.save
     end
 

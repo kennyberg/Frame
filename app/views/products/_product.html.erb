@@ -14,7 +14,7 @@
           <div class="dropdown mb-4">
             <select name="frame[dimension]" id="dimension" class="dropbtn">
               <option value="<%= @product.frame_combo.frame_dimension.id %>"><%= @product.frame_combo.frame_dimension.format %></option>
-              <% @frame_dimensions.each do |dimension| %>
+              <% @frame_dimension.each do |dimension| %>
                 <option class="dropdown-content btn-desactivated" value="<%= dimension.id %>"><%= dimension.format %></option>
               <% end %>
             </select>

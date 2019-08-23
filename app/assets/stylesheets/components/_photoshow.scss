@@ -3,9 +3,11 @@
   display: -webkit-box;
   display: flex;
   margin: 0px 0px;
-  padding: 50px 5px;
+  padding: 50px 5px 50px 5px;
   flex-wrap: wrap;
   justify-content: space-evenly;
+  min-height: calc(100vh - 67px);
+  align-items: center;
   }
 
 .photoshow {
@@ -16,6 +18,8 @@
 
 .large-photo {
   min-width: 50vw;
+  display: flex;
+  justify-content: center;
 }
 
 
