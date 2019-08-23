@@ -112,6 +112,7 @@ class PhotosController < ApplicationController
       @photo = Photo.new(photo_params)
       # below, we make sure that the photo uploaded by the user only belongs to him and not the other users
       @photo.user_id = current_user.id
+      @photo.description = "landscape"
       # below, allows us to get the cloudinary link of the photo
       @photo.cl_url = "https://res.cloudinary.com/kbframe/#{@photo.upload.identifier}"
       if @photo.save
