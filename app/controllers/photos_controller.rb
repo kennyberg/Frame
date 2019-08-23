@@ -1,5 +1,5 @@
 class PhotosController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index, :show, :create]
+  skip_before_action :authenticate_user!, only: [:index, :show, :upload,:create]
 
   def index
     if params[:query] && params[:query] != ""

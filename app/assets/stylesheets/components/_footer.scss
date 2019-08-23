@@ -7,7 +7,7 @@
 
 .footer {
     padding: 50px 0 20px 0;
-    background-color: #272D3D;
+    background-color: $dark-blue;
     color: $white;
     box-shadow: 0 5px 4px 3px $white;
 }
@@ -41,7 +41,7 @@
     margin: 1px;
     border-radius:4px;
     margin-top: 6px;
-    background-color: black;
+    background-color: #272D3D;
     border: solid 0.5px #fff;
     font-size: 12px;
 }

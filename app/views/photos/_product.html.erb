@@ -83,18 +83,18 @@
     if (frameMaterial == 0) {
       photoWoodLandscapeFrame.style.display = "none";
       photoAluLandscapeFrame.style.display = "none";
-      photoWithoutFrame.style.display = "block";
+      photoWithoutFrame.style.display = "flex";
       photoWoodPortraitFrame.style.display = "none";
       photoAluPortraitFrame.style.display = "none";
     } else if (frameMaterial == 1 && frameDimension < 5) {
       photoAluLandscapeFrame.style.display = "none";
       photoWoodLandscapeFrame.style.display = "none";
       photoWithoutFrame.style.display = "none";
-      photoWoodPortraitFrame.style.display = "block";
+      photoWoodPortraitFrame.style.display = "flex";
       photoAluPortraitFrame.style.display = "none";
     } else if (frameMaterial == 1 && frameDimension == 5) {
       photoAluLandscapeFrame.style.display = "none";
-      photoWoodLandscapeFrame.style.display = "block";
+      photoWoodLandscapeFrame.style.display = "flex";
       photoWithoutFrame.style.display = "none";
       photoWoodPortraitFrame.style.display = "none";
       photoAluPortraitFrame.style.display = "none";
@@ -103,10 +103,10 @@
       photoAluLandscapeFrame.style.display = "none";
       photoWithoutFrame.style.display = "none";
       photoWoodPortraitFrame.style.display = "none";
-      photoAluPortraitFrame.style.display = "block";
+      photoAluPortraitFrame.style.display = "flex";
     } else if (frameMaterial == 2 && frameDimension == 5) {
       photoWoodLandscapeFrame.style.display = "none";
-      photoAluLandscapeFrame.style.display = "block";
+      photoAluLandscapeFrame.style.display = "flex";
       photoWithoutFrame.style.display = "none";
       photoWoodPortraitFrame.style.display = "none";
       photoAluPortraitFrame.style.display = "none";

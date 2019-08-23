@@ -23,8 +23,10 @@ class ProductsController < ApplicationController
     # below, we do exactly the same as what we have done in photo#show controller
     @product = Product.find(params[:id])
     @photo = Photo.find(@product.photo_id)
-    @frame_dimensions = FrameDimension.all
     @frame_materials = FrameMaterial.all
+
+
+    @frame_dimension = FrameDimension.where(orientation: @photo.description)
 
     @prices = FrameCombo.all.map do |combo|
       {

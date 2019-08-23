@@ -5,11 +5,11 @@
       <% if user_signed_in? && current_user.has_favorite_photo?(photo["id"]) %>
       <div class="icon-container">
         <a id="destroy-<%=current_user.favorite_id(photo["id"])%>" href="/favorites/<%=current_user.favorite_id(photo["id"])%>"  data-apiId="<%= photo["id"]%>" data-method="delete" data-remote="true" style="visibility:hidden"></a>
-        <i class="fas fa-heart icon-clicked" data-id = "<%= photo['id'] %>" data-src="<%= photo["src"]["large2x"]%>"></i>
+        <i class="fas fa-heart icon-clicked" data-id = "<%= photo['id'] %>" data-src="<%= photo["src"]["large2x"]%>" data-height = "<%= photo['height'] %>" data-width = "<%= photo['width'] %>"></i>
       </div>
       <% elsif  user_signed_in?  %>
       <div class="icon-container">
-        <i class="fas fa-heart" data-id = "<%= photo['id'] %>" data-src="<%= photo["src"]["large2x"]%>"></i>
+        <i class="fas fa-heart" data-id = "<%= photo['id'] %>" data-src="<%= photo["src"]["large2x"]%>" data-height = "<%= photo['height'] %>" data-width = "<%= photo['width'] %>"></i>
       </div>
     <% end %>
 

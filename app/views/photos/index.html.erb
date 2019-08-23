@@ -25,11 +25,11 @@
       <% if user_signed_in? && current_user.has_favorite_photo?(photo["id"]) %>
       <div class="icon-container">
         <a id="destroy-<%=current_user.favorite_id(photo["id"])%>" href="/favorites/<%=current_user.favorite_id(photo["id"])%>"  data-apiId="<%= photo["id"]%>" data-method="delete" data-remote="true" style="visibility:hidden"></a>
-        <i class="fas fa-heart icon-clicked" data-id = "<%= photo['id'] %>" data-src="<%= photo["src"]["large2x"]%>"></i>
+        <i class="fas fa-heart icon-clicked" data-id = "<%= photo['id'] %>" data-src="<%= photo["src"]["large2x"]%>" data-height = "<%= photo['height'] %>" data-width = "<%= photo['width'] %>"></i>
       </div>
       <% elsif  user_signed_in?  %>
       <div class="icon-container">
-        <i class="fas fa-heart" data-id = "<%= photo['id'] %>" data-src="<%= photo["src"]["large2x"]%>"></i>
+        <i class="fas fa-heart" data-id = "<%= photo['id'] %>" data-src="<%= photo["src"]["large2x"]%>" data-height = "<%= photo['height'] %>" data-width = "<%= photo['width'] %>"></i>
       </div>
     <% end %>
 
@@ -55,6 +55,8 @@
 <%= simple_form_for Favorite.new, remote: true do |f| %>
   <input  id="favorite_api_id" type="text" value="" hidden="true" name="api_id">
   <input type="text" id="favorite_api_url" value="" hidden="true" name="url_id">
+  <input  id="p-height" type="text" value="" hidden="true" name="height">
+  <input type="text" id="p-width" value="" hidden="true" name="width">
 <% end %>
 
 <!-- <p>
@@ -115,11 +117,15 @@
   let apiId = document.querySelector("#favorite_api_id")
   let addIds = JSON.parse(localStorage.getItem("addIds")) || [];
   let removeIds = JSON.parse(localStorage.getItem("removeIds")) || [];
+  let photow = document.querySelector("#p-width")
+  let photoh = document.querySelector("#p-height")
 
   hearts.forEach((heart)=>{
     heart.addEventListener('click', (e) => {
       apiId.value = e.target.dataset.id
       apiUrl.value = e.target.dataset.src
+      photow.value = e.target.dataset.width
+      photoh.value = e.target.dataset.height
       if (e.target.classList.contains("icon-clicked")) {
         addIds = addIds.filter(function(item) { return item !== e.target.dataset.id })
         removeIds.push(e.target.dataset.id)
